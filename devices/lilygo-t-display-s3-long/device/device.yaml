@@ -36,6 +36,14 @@ external_components:
 - source: ${espcontrol_component_source}
   components: [ espcontrol, web_server_idf, artwork_image ]
   refresh: 1s
+# Patched sy6970 (auto-kicks the chip's I2C watchdog, adds i2c_watchdog_timeout).
+# Loaded from the ESPHome fork branch that backs the upstream PR, overriding the
+# built-in component; drop this entry once the fix ships in an ESPHome release.
+- source:
+    type: git
+    url: https://github.com/willumpie82/esphome
+    ref: sy6970-i2c-watchdog
+  components: [ sy6970 ]
 
 espcontrol:
   id: espcontrol_app
@@ -67,7 +75,6 @@ esphome:
     then:
     - lambda: 'id(screen_rotation_ready) = true;'
     - script.execute: clock_bar_apply
-    - script.execute: sy6970_disable_watchdog
 
 # ---------------------------------------------------------------------------
 # PSRAM (video frame buffer memory)
@@ -324,11 +331,12 @@ select:
 # PMU (SY6970 battery charger, shares the touchscreen I2C bus)
 # ---------------------------------------------------------------------------
 # Values below (current/voltage limits) match a previously confirmed-working
-# reference configuration for this exact board. enable_status_led/
-# charge_enabled below do correctly control the STAT LED and charging -
-# but see the sy6970_disable_watchdog script further down: without it,
-# this chip's I2C watchdog silently reverts both back to power-on
-# defaults (LED on, charging on) about 40s after every boot or toggle.
+# reference configuration for this exact board. The stock ESPHome component
+# never serviced the chip's I2C watchdog (REG07 bits 5:4, POR 40s), which
+# silently reverted charge_enabled and the STAT LED disable bit to power-on
+# defaults ~40s after every boot or toggle. The patched component loaded via
+# external_components above kicks it on every update(), so the watchdog stays
+# enabled as a safety net (update_interval must stay below the timeout).
 sy6970:
 - id: pmu
   i2c_id: touchscreen_bus
@@ -340,6 +348,7 @@ sy6970:
   precharge_current: 128
   charge_enabled: false
   enable_adc: true
+  i2c_watchdog_timeout: 40S
   update_interval: 1s
 
 # Diagnostic-only visibility into live PMU communication (dump_config above
@@ -390,28 +399,3 @@ switch:
   - lambda: 'id(pmu).set_charge_enabled(true);'
   turn_off_action:
   - lambda: 'id(pmu).set_charge_enabled(false);'
-
-# The SY6970 has an I2C watchdog (REG07 bits 5:4, WATCHDOG[1:0]; datasheet
-# confirms POR default is 01 = 40s) that silently reverts most registers -
-# including charge_enabled (REG03 CHG_CONFIG) and the STAT LED disable bit
-# (REG07 STAT_DIS) - back to power-on defaults if not reset, which matches
-# exactly what was observed on hardware: charging and the LED both
-# silently re-enable ~40s after being turned off. The ESPHome sy6970
-# component never touches these bits (its own register-write methods are
-# also protected, not callable from YAML), so disable the watchdog
-# directly over the I2C bus once at boot - a read-modify-write to REG07
-# clearing WATCHDOG[1:0] to 00 (disable) while preserving the other bits
-# (EN_TERM, STAT_DIS, EN_TIMER, CHG_TIMER, JEITA_ISET) as the sy6970
-# component itself already configured them via its normal setup().
-script:
-- id: sy6970_disable_watchdog
-  mode: single
-  then:
-  - lambda: |-
-      uint8_t reg = 0x07;
-      uint8_t value = 0;
-      if (id(touchscreen_bus).write_readv(0x6A, &reg, 1, &value, 1) == i2c::ERROR_OK) {
-        value &= ~0x30;  // REG07 bits 5:4 (WATCHDOG[1:0]) = 00 (disable)
-        uint8_t buf[2] = {0x07, value};
-        id(touchscreen_bus).write(0x6A, buf, 2);
-      }
