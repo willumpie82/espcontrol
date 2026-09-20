@@ -33,9 +33,9 @@ esp32:
 # External component
 # ---------------------------------------------------------------------------
 external_components:
-  - source: ${espcontrol_component_source}
-    components: [espcontrol, web_server_idf, artwork_image]
-    refresh: 1s
+- source: ${espcontrol_component_source}
+  components: [ espcontrol, web_server_idf, artwork_image ]
+  refresh: 1s
 
 espcontrol:
   id: espcontrol_app
@@ -45,14 +45,14 @@ espcontrol:
     button_order: button_order
     button_on_color: button_on_color
     buttons:
-      - config: button_1_config
-        subpage_chunks: [subpage_1_config, subpage_1_config_ext, subpage_1_config_ext_2, subpage_1_config_ext_3]
-      - config: button_2_config
-        subpage_chunks: [subpage_2_config, subpage_2_config_ext, subpage_2_config_ext_2, subpage_2_config_ext_3]
-      - config: button_3_config
-        subpage_chunks: [subpage_3_config, subpage_3_config_ext, subpage_3_config_ext_2, subpage_3_config_ext_3]
-      - config: button_4_config
-        subpage_chunks: [subpage_4_config, subpage_4_config_ext, subpage_4_config_ext_2, subpage_4_config_ext_3]
+    - config: button_1_config
+      subpage_chunks: [ subpage_1_config, subpage_1_config_ext, subpage_1_config_ext_2, subpage_1_config_ext_3 ]
+    - config: button_2_config
+      subpage_chunks: [ subpage_2_config, subpage_2_config_ext, subpage_2_config_ext_2, subpage_2_config_ext_3 ]
+    - config: button_3_config
+      subpage_chunks: [ subpage_3_config, subpage_3_config_ext, subpage_3_config_ext_2, subpage_3_config_ext_3 ]
+    - config: button_4_config
+      subpage_chunks: [ subpage_4_config, subpage_4_config_ext, subpage_4_config_ext_2, subpage_4_config_ext_3 ]
 
 # ---------------------------------------------------------------------------
 # ESPHome core (device name from substitutions)
@@ -61,12 +61,13 @@ esphome:
   name: ${name}
   friendly_name: ${friendly_name}
   build_flags:
-    - "-DESPCONTROL_MAX_GRID_SLOTS=4"
+  - "-DESPCONTROL_MAX_GRID_SLOTS=4"
   on_boot:
-    - priority: -100
-      then:
-        - lambda: 'id(screen_rotation_ready) = true;'
-        - script.execute: clock_bar_apply
+  - priority: -100
+    then:
+    - lambda: 'id(screen_rotation_ready) = true;'
+    - script.execute: clock_bar_apply
+    - script.execute: sy6970_disable_watchdog
 
 # ---------------------------------------------------------------------------
 # PSRAM (video frame buffer memory)
@@ -78,34 +79,34 @@ psram:
 # OTA updates (ESPHome native + HTTP-based)
 # ---------------------------------------------------------------------------
 ota:
-  - platform: esphome
-    on_begin:
-      then:
-        - script.execute: show_update_writing
-        - script.wait: show_update_writing
-    on_end:
-      then:
-        - globals.set:
-            id: firmware_update_complete_pending
-            value: 'true'
-        - lambda: 'global_preferences->sync();'
-    on_error:
-      then:
-        - script.execute: show_update_failed
-  - platform: http_request
-    on_begin:
-      then:
-        - script.execute: show_update_writing
-        - script.wait: show_update_writing
-    on_end:
-      then:
-        - globals.set:
-            id: firmware_update_complete_pending
-            value: 'true'
-        - lambda: 'global_preferences->sync();'
-    on_error:
-      then:
-        - script.execute: show_update_failed
+- platform: esphome
+  on_begin:
+    then:
+    - script.execute: show_update_writing
+    - script.wait: show_update_writing
+  on_end:
+    then:
+    - globals.set:
+        id: firmware_update_complete_pending
+        value: 'true'
+    - lambda: 'global_preferences->sync();'
+  on_error:
+    then:
+    - script.execute: show_update_failed
+- platform: http_request
+  on_begin:
+    then:
+    - script.execute: show_update_writing
+    - script.wait: show_update_writing
+  on_end:
+    then:
+    - globals.set:
+        id: firmware_update_complete_pending
+        value: 'true'
+    - lambda: 'global_preferences->sync();'
+  on_error:
+    then:
+    - script.execute: show_update_failed
 
 safe_mode:
   id: t_display_s3_long_safe_mode
@@ -131,65 +132,79 @@ wifi:
   use_psram: true
 
 # ---------------------------------------------------------------------------
+# Improv Wi-Fi provisioning over the USB serial connection
+# ---------------------------------------------------------------------------
+# The fallback AP (wifi.ap, from core_infra) only stays up for a short
+# ap_timeout window per retry cycle and there is no captive_portal to give
+# it a setup page, so it is an unreliable way to reconfigure Wi-Fi on a
+# network that is itself flaky. improv_serial provisions credentials over
+# the USB cable directly instead - no dependency on any Wi-Fi network being
+# reachable at all. Requires logger.hardware_uart != USB_CDC on ESP32-S3
+# (this board uses USB_SERIAL_JTAG, which is fine). Use the Improv Wi-Fi
+# web tool (www.improv-wifi.com, Web Serial, Chrome/Edge) or `esphome
+# --device <port> logs dev.yaml` to provision over serial.
+improv_serial:
+
+# ---------------------------------------------------------------------------
 # Backlight (LEDC PWM output + monochromatic light entity)
 # ---------------------------------------------------------------------------
 output:
-  - platform: ledc
-    pin: GPIO1
-    id: gpio_backlight_pwm
+- platform: ledc
+  pin: GPIO1
+  id: gpio_backlight_pwm
 
 light:
-  - platform: monochromatic
-    output: gpio_backlight_pwm
-    name: Display Backlight
-    icon: mdi:lightbulb-on
-    id: display_backlight
-    restore_mode: RESTORE_DEFAULT_ON
-    default_transition_length: 0s
-    gamma_correct: 1.0
-    on_turn_on:
-      then:
+- platform: monochromatic
+  output: gpio_backlight_pwm
+  name: Display Backlight
+  icon: mdi:lightbulb-on
+  id: display_backlight
+  restore_mode: RESTORE_DEFAULT_ON
+  default_transition_length: 0s
+  gamma_correct: 1.0
+  on_turn_on:
+    then:
+    - if:
+        condition:
+          lambda: |-
+            auto now = panel_time_or_fallback(id(panel_time).now(), id(homeassistant_time).now());
+            return (id(espcontrol_app).display().target_source_is(
+                        espcontrol::DisplayRequestSource::SCREEN_SCHEDULE) &&
+                    id(espcontrol_app).display().target_mode_is(
+                        espcontrol::DisplayMode::DISPLAY_OFF)) ||
+                   screen_schedule_waiting_for_time(
+                     id(screen_schedule_trigger).state,
+                     id(schedule_enabled).state,
+                     now.is_valid());
+        then:
+        - script.execute: backlight_force_display_off
+        else:
         - if:
             condition:
               lambda: |-
-                auto now = panel_time_or_fallback(id(panel_time).now(), id(homeassistant_time).now());
-                return (id(espcontrol_app).display().target_source_is(
-                            espcontrol::DisplayRequestSource::SCREEN_SCHEDULE) &&
-                        id(espcontrol_app).display().target_mode_is(
-                            espcontrol::DisplayMode::DISPLAY_OFF)) ||
-                       screen_schedule_waiting_for_time(
-                         id(screen_schedule_trigger).state,
-                         id(schedule_enabled).state,
-                         now.is_valid());
+                return id(espcontrol_app).display().current_mode_is(
+                    espcontrol::DisplayMode::DISPLAY_OFF);
             then:
-              - script.execute: backlight_force_display_off
-            else:
-              - if:
-                  condition:
-                    lambda: |-
-                      return id(espcontrol_app).display().current_mode_is(
-                          espcontrol::DisplayMode::DISPLAY_OFF);
-                  then:
-                    - script.execute: screensaver_wake
-    on_turn_off:
-      then:
-        - script.execute: display_backlight_handle_off
-    on_state:
-      then:
-        - script.execute: display_backlight_handle_state
+            - script.execute: screensaver_wake
+  on_turn_off:
+    then:
+    - script.execute: display_backlight_handle_off
+  on_state:
+    then:
+    - script.execute: display_backlight_handle_state
 
 # ---------------------------------------------------------------------------
 # QSPI bus (shared by the AXS15231B display)
 # ---------------------------------------------------------------------------
 spi:
-  - id: display_qspi
-    type: quad
-    clk_pin: GPIO17
-    data_pins:
-      - GPIO13
-      - GPIO18
-      - GPIO21
-      - GPIO14
+- id: display_qspi
+  type: quad
+  clk_pin: GPIO17
+  data_pins:
+  - GPIO13
+  - GPIO18
+  - GPIO21
+  - GPIO14
 
 # ---------------------------------------------------------------------------
 # I2C bus and touchscreen (CST3530 capacitive, wakes screensaver on touch)
@@ -200,27 +215,37 @@ i2c:
   id: touchscreen_bus
 
 touchscreen:
-  - platform: axs15231
-    id: my_touchscreen
-    display: my_display
-    i2c_id: touchscreen_bus
-    # Touch calibration below matches the display's logical 640x180 canvas
-    # (post software-rotation - see the display block below). These
-    # mirror_x/mirror_y/swap_xy values match a previously confirmed-working
-    # reference configuration for this exact board.
-    transform:
-      mirror_x: true
-      mirror_y: true
-      swap_xy: false
-    calibration:
-      x_min: 0
-      x_max: 640
-      y_min: 0
-      y_max: 180
-    on_touch:
-      - script.execute: cover_art_pause_after_touch
-      - script.wait: cover_art_pause_after_touch
-      - script.execute: screensaver_wake
+- platform: axs15231
+  id: my_touchscreen
+  display: my_display
+  i2c_id: touchscreen_bus
+  # LVGL applies its OWN separate rotation to incoming touch coordinates
+  # (LvglComponent::rotate_coordinates(), for rotation=90: new_x=old_y,
+  # new_y=native_width-old_x-1) - it expects this component's touch.x/
+  # touch.y already in NATIVE (unrotated) space, matching the display's
+  # true native dims (180 wide x 640 tall), NOT the logical rotated
+  # 640x180 canvas. touch.x is scaled against native width (180), touch.y
+  # against native height (640) - calibration bounds below match those
+  # native dims per axis (confirmed on hardware via raw touch debug
+  # logging: touch.y was clamping/collapsing to 0 across most of the
+  # screen with the previous x_max/y_max values swapped relative to this).
+  # swap_xy is still required: the raw sensor's own x/y come through
+  # swapped relative to which native dimension each axis should scale
+  # against. mirror_x/mirror_y are confirmed correct via on-hardware
+  # button-click testing (button 3/4 landed on the right tiles).
+  transform:
+    mirror_x: false
+    mirror_y: true
+    swap_xy: true
+  calibration:
+    x_min: 0
+    x_max: 180
+    y_min: 0
+    y_max: 640
+  on_touch:
+  - script.execute: cover_art_pause_after_touch
+  - script.wait: cover_art_pause_after_touch
+  - script.execute: screensaver_wake
 
 # ---------------------------------------------------------------------------
 # Display (3.4" 640x180 QSPI AXS15231B bar panel)
@@ -233,16 +258,16 @@ touchscreen:
 # previously confirmed-working reference configuration for this exact
 # board.
 display:
-  - platform: mipi_spi
-    id: my_display
-    spi_id: display_qspi
-    model: AXS15231
-    dimensions:
-      height: 640
-      width: 180
-    cs_pin: GPIO12
-    reset_pin: GPIO16
-    auto_clear_enabled: false
+- platform: mipi_spi
+  id: my_display
+  spi_id: display_qspi
+  model: AXS15231
+  dimensions:
+    height: 640
+    width: 180
+  cs_pin: GPIO12
+  reset_pin: GPIO16
+  auto_clear_enabled: false
 
 # ---------------------------------------------------------------------------
 # LVGL base (display binding, must be before any page definitions)
@@ -278,19 +303,115 @@ lvgl:
   full_refresh: true
   displays: my_display
   touchscreens:
-    - touchscreen_id: my_touchscreen
-      long_press_time: 3s
+  - touchscreen_id: my_touchscreen
+    long_press_time: 3s
 
 select:
-  - platform: template
-    name: "${entity_screen_rotation}"
-    internal: true
-    disabled_by_default: true
-    id: screen_rotation_select
-    entity_category: config
-    icon: "mdi:screen-rotation"
-    optimistic: true
-    restore_value: true
-    initial_option: "0"
-    options:
-      - "0"
+- platform: template
+  name: "${entity_screen_rotation}"
+  internal: true
+  disabled_by_default: true
+  id: screen_rotation_select
+  entity_category: config
+  icon: "mdi:screen-rotation"
+  optimistic: true
+  restore_value: true
+  initial_option: "0"
+  options:
+  - "0"
+
+# ---------------------------------------------------------------------------
+# PMU (SY6970 battery charger, shares the touchscreen I2C bus)
+# ---------------------------------------------------------------------------
+# Values below (current/voltage limits) match a previously confirmed-working
+# reference configuration for this exact board. enable_status_led/
+# charge_enabled below do correctly control the STAT LED and charging -
+# but see the sy6970_disable_watchdog script further down: without it,
+# this chip's I2C watchdog silently reverts both back to power-on
+# defaults (LED on, charging on) about 40s after every boot or toggle.
+sy6970:
+- id: pmu
+  i2c_id: touchscreen_bus
+  address: 0x6a
+  enable_status_led: false
+  input_current_limit: 1000
+  charge_voltage: 4200
+  charge_current: 500
+  precharge_current: 128
+  charge_enabled: false
+  enable_adc: true
+  update_interval: 1s
+
+# Diagnostic-only visibility into live PMU communication (dump_config above
+# only echoes configured values, not a real readback - these confirm the
+# chip is actually responding to polling, not just acknowledging its I2C
+# address at setup).
+binary_sensor:
+- platform: sy6970
+  sy6970_id: pmu
+  vbus_connected:
+    name: "Battery VBUS Connected"
+    entity_category: diagnostic
+  charging:
+    name: "Battery Charging Active"
+    entity_category: diagnostic
+  charge_done:
+    name: "Battery Charge Done"
+    entity_category: diagnostic
+
+text_sensor:
+- platform: sy6970
+  sy6970_id: pmu
+  bus_status:
+    name: "Battery Bus Status"
+    entity_category: diagnostic
+  charge_status:
+    name: "Battery Charge Status"
+    entity_category: diagnostic
+
+switch:
+- platform: template
+  name: "${entity_battery_charging_enabled}"
+  # id changed from battery_charging_enabled: an earlier flash had
+  # restore_mode: RESTORE_DEFAULT_ON, which persisted an "ON" value to
+  # flash - RESTORE_DEFAULT_* only applies when there is no persisted
+  # value yet, so switching this to RESTORE_DEFAULT_OFF alone did not
+  # take effect (still restored the stale "ON" and re-enabled charging a
+  # few seconds into boot, silently). A new id gets a fresh preference
+  # slot with no persisted value, so the new default actually applies.
+  id: pmu_charge_switch
+  icon: "mdi:battery-charging"
+  entity_category: config
+  optimistic: true
+  restore_mode: RESTORE_DEFAULT_OFF
+  web_server:
+    sorting_group_id: sg_display
+  turn_on_action:
+  - lambda: 'id(pmu).set_charge_enabled(true);'
+  turn_off_action:
+  - lambda: 'id(pmu).set_charge_enabled(false);'
+
+# The SY6970 has an I2C watchdog (REG07 bits 5:4, WATCHDOG[1:0]; datasheet
+# confirms POR default is 01 = 40s) that silently reverts most registers -
+# including charge_enabled (REG03 CHG_CONFIG) and the STAT LED disable bit
+# (REG07 STAT_DIS) - back to power-on defaults if not reset, which matches
+# exactly what was observed on hardware: charging and the LED both
+# silently re-enable ~40s after being turned off. The ESPHome sy6970
+# component never touches these bits (its own register-write methods are
+# also protected, not callable from YAML), so disable the watchdog
+# directly over the I2C bus once at boot - a read-modify-write to REG07
+# clearing WATCHDOG[1:0] to 00 (disable) while preserving the other bits
+# (EN_TERM, STAT_DIS, EN_TIMER, CHG_TIMER, JEITA_ISET) as the sy6970
+# component itself already configured them via its normal setup().
+script:
+- id: sy6970_disable_watchdog
+  mode: single
+  then:
+  - lambda: |-
+      uint8_t reg = 0x07;
+      uint8_t value = 0;
+      if (id(touchscreen_bus).write_readv(0x6A, &reg, 1, &value, 1) == i2c::ERROR_OK) {
+        value &= ~0x30;  // REG07 bits 5:4 (WATCHDOG[1:0]) = 00 (disable)
+        uint8_t buf[2] = {0x07, value};
+        id(touchscreen_bus).write(0x6A, buf, 2);
+      }

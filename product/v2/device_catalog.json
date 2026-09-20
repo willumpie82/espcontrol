@@ -1258,7 +1258,7 @@
             "labelSize": 1.75,
             "coverArtTitleSize": 6.5,
             "coverArtArtistSize": 3.2,
-            "labelLines": 1,
+            "labelLines": 2,
             "labelLinesDouble": 2
           },
           "emptyCell": {
