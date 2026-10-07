@@ -1,0 +1,405 @@
+# =============================================================================
+# DEVICE - LilyGO T-Display S3 Long hardware definition
+# =============================================================================
+# Pin assignments, peripherals, and platform config for the 3.4" 640x180 bar
+# panel. Includes the ESP32-S3R8 SoC (native WiFi, octal PSRAM), AXS15231B
+# QSPI TFT, CST3530 capacitive touchscreen (I2C, addressed via the native
+# ESPHome axs15231 touchscreen driver), and backlight PWM.
+#
+# Pin assignments come from LilyGO's own example firmware
+# (Xinyuan-LilyGO/T-Display-S3-Long, examples/*/pins_config.h). Touch uses
+# the stock ESPHome axs15231 touchscreen component. The display uses the
+# stock ESPHome mipi_spi/AXS15231 model, configured at its native panel
+# geometry (180 wide x 640 tall) with `rotation: 90` - this chip has no
+# hardware axis-swap bit, so ESPHome normalizes that rotation into a
+# software LVGL-level rotation automatically, matching a previously
+# confirmed-working reference configuration for this exact board.
+# =============================================================================
+
+substitutions:
+  espcontrol_component_source: "github://jtenniswood/espcontrol@main"
+  mdi_font_file: "https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/fonts/materialdesignicons-webfont.ttf"
+
+# ---------------------------------------------------------------------------
+# ESP32-S3 platform (16MB flash, ESP-IDF framework)
+# ---------------------------------------------------------------------------
+esp32:
+  board: esp32-s3-devkitc-1
+  flash_size: 16MB
+  framework:
+    type: esp-idf
+
+# ---------------------------------------------------------------------------
+# External component
+# ---------------------------------------------------------------------------
+external_components:
+- source: ${espcontrol_component_source}
+  components: [ espcontrol, web_server_idf, artwork_image ]
+  refresh: 1s
+# Patched sy6970 (auto-kicks the chip's I2C watchdog, adds i2c_watchdog_timeout).
+# Backs esphome/esphome#19424 (not yet merged). Pinned to a fixed commit on a
+# branch based on the 2026.9.1 release tag - NOT the PR's own branch, which
+# tracks ESPHome dev and once pulled in a dev-only core API (sub_binary_sensors,
+# added post-2026.9.1) that broke compiling against the current stable release.
+# Re-pin if the pinned commit's branch is rebased, and drop this whole entry
+# once the fix ships in an ESPHome release.
+- source:
+    type: git
+    url: https://github.com/willumpie82/esphome
+    ref: 362b4d6cc18e9817881d356dbbf85c012b3a6840
+  components: [ sy6970 ]
+
+espcontrol:
+  id: espcontrol_app
+  panel_config:
+    device_profile: ${device_slug}
+    storage: card_images
+    button_order: button_order
+    button_on_color: button_on_color
+    buttons:
+    - config: button_1_config
+      subpage_chunks: [ subpage_1_config, subpage_1_config_ext, subpage_1_config_ext_2, subpage_1_config_ext_3 ]
+    - config: button_2_config
+      subpage_chunks: [ subpage_2_config, subpage_2_config_ext, subpage_2_config_ext_2, subpage_2_config_ext_3 ]
+    - config: button_3_config
+      subpage_chunks: [ subpage_3_config, subpage_3_config_ext, subpage_3_config_ext_2, subpage_3_config_ext_3 ]
+    - config: button_4_config
+      subpage_chunks: [ subpage_4_config, subpage_4_config_ext, subpage_4_config_ext_2, subpage_4_config_ext_3 ]
+
+# ---------------------------------------------------------------------------
+# ESPHome core (device name from substitutions)
+# ---------------------------------------------------------------------------
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+  build_flags:
+  - "-DESPCONTROL_MAX_GRID_SLOTS=4"
+  on_boot:
+  - priority: -100
+    then:
+    - lambda: 'id(screen_rotation_ready) = true;'
+    - script.execute: clock_bar_apply
+
+# ---------------------------------------------------------------------------
+# PSRAM (video frame buffer memory)
+# ---------------------------------------------------------------------------
+psram:
+  mode: octal
+
+# ---------------------------------------------------------------------------
+# OTA updates (ESPHome native + HTTP-based)
+# ---------------------------------------------------------------------------
+ota:
+- platform: esphome
+  on_begin:
+    then:
+    - script.execute: show_update_writing
+    - script.wait: show_update_writing
+  on_end:
+    then:
+    - globals.set:
+        id: firmware_update_complete_pending
+        value: 'true'
+    - lambda: 'global_preferences->sync();'
+  on_error:
+    then:
+    - script.execute: show_update_failed
+- platform: http_request
+  on_begin:
+    then:
+    - script.execute: show_update_writing
+    - script.wait: show_update_writing
+  on_end:
+    then:
+    - globals.set:
+        id: firmware_update_complete_pending
+        value: 'true'
+    - lambda: 'global_preferences->sync();'
+  on_error:
+    then:
+    - script.execute: show_update_failed
+
+safe_mode:
+  id: t_display_s3_long_safe_mode
+
+# ---------------------------------------------------------------------------
+# Shared infrastructure (API, logging, web server, restart button)
+# ---------------------------------------------------------------------------
+packages:
+  core_infra: !include ../../../common/device/core_infra.yaml
+
+# This is a compact ESP32-S3 panel with no ESP32-C6 co-processor to share the
+# connection load with. Keep the native API connection pool modest, but allow
+# one spare slot so Home Assistant can reconnect after an abrupt OTA reset
+# while the ESPHome dashboard/logger still has a socket open. Give the send
+# queue extra headroom so reconnect bursts and compact Home Assistant action
+# responses do not drop the API connection.
+api:
+  listen_backlog: 4
+  max_connections: 3
+  max_send_queue: 12
+
+wifi:
+  use_psram: true
+
+# ---------------------------------------------------------------------------
+# Improv Wi-Fi provisioning over the USB serial connection
+# ---------------------------------------------------------------------------
+# The fallback AP (wifi.ap, from core_infra) only stays up for a short
+# ap_timeout window per retry cycle and there is no captive_portal to give
+# it a setup page, so it is an unreliable way to reconfigure Wi-Fi on a
+# network that is itself flaky. improv_serial provisions credentials over
+# the USB cable directly instead - no dependency on any Wi-Fi network being
+# reachable at all. Requires logger.hardware_uart != USB_CDC on ESP32-S3
+# (this board uses USB_SERIAL_JTAG, which is fine). Use the Improv Wi-Fi
+# web tool (www.improv-wifi.com, Web Serial, Chrome/Edge) or `esphome
+# --device <port> logs dev.yaml` to provision over serial.
+improv_serial:
+
+# ---------------------------------------------------------------------------
+# Backlight (LEDC PWM output + monochromatic light entity)
+# ---------------------------------------------------------------------------
+output:
+- platform: ledc
+  pin: GPIO1
+  id: gpio_backlight_pwm
+
+light:
+  - platform: monochromatic
+    output: gpio_backlight_pwm
+    name: Display Backlight
+    icon: mdi:lightbulb-on
+    id: display_backlight
+    restore_mode: RESTORE_DEFAULT_ON
+    default_transition_length: 0s
+    gamma_correct: 1.0
+    on_turn_on:
+      then:
+      - if:
+          condition:
+            lambda: |-
+              auto now = panel_time_or_fallback(id(panel_time).now(), id(homeassistant_time).now());
+              return (id(espcontrol_app).display().target_source_is(
+                          espcontrol::DisplayRequestSource::SCREEN_SCHEDULE) &&
+                      id(espcontrol_app).display().target_mode_is(
+                          espcontrol::DisplayMode::DISPLAY_OFF)) ||
+                     screen_schedule_waiting_for_time(
+                       id(screen_schedule_trigger).state,
+                       id(schedule_enabled).state,
+                       now.is_valid());
+          then:
+          - script.execute: backlight_force_display_off
+          else:
+          - if:
+              condition:
+                lambda: |-
+                  return id(espcontrol_app).display().current_mode_is(
+                      espcontrol::DisplayMode::DISPLAY_OFF);
+              then:
+              - script.execute: screensaver_wake
+    on_turn_off:
+      then:
+      - script.execute: display_backlight_handle_off
+    on_state:
+      then:
+      - script.execute: display_backlight_handle_state
+
+# ---------------------------------------------------------------------------
+# QSPI bus (shared by the AXS15231B display)
+# ---------------------------------------------------------------------------
+spi:
+- id: display_qspi
+  type: quad
+  clk_pin: GPIO17
+  data_pins:
+  - GPIO13
+  - GPIO18
+  - GPIO21
+  - GPIO14
+
+# ---------------------------------------------------------------------------
+# I2C bus and touchscreen (CST3530 capacitive, wakes screensaver on touch)
+# ---------------------------------------------------------------------------
+i2c:
+  sda: GPIO15
+  scl: GPIO10
+  id: touchscreen_bus
+
+touchscreen:
+- platform: axs15231
+  id: my_touchscreen
+  display: my_display
+  i2c_id: touchscreen_bus
+  # LVGL applies its OWN separate rotation to incoming touch coordinates
+  # (LvglComponent::rotate_coordinates(), for rotation=90: new_x=old_y,
+  # new_y=native_width-old_x-1) - it expects this component's touch.x/
+  # touch.y already in NATIVE (unrotated) space, matching the display's
+  # true native dims (180 wide x 640 tall), NOT the logical rotated
+  # 640x180 canvas. touch.x is scaled against native width (180), touch.y
+  # against native height (640) - calibration bounds below match those
+  # native dims per axis (confirmed on hardware via raw touch debug
+  # logging: touch.y was clamping/collapsing to 0 across most of the
+  # screen with the previous x_max/y_max values swapped relative to this).
+  # swap_xy is still required: the raw sensor's own x/y come through
+  # swapped relative to which native dimension each axis should scale
+  # against. mirror_x/mirror_y are confirmed correct via on-hardware
+  # button-click testing (button 3/4 landed on the right tiles).
+  transform:
+    mirror_x: false
+    mirror_y: true
+    swap_xy: true
+  calibration:
+    x_min: 0
+    x_max: 180
+    y_min: 0
+    y_max: 640
+  on_touch:
+      - script.execute: cover_art_pause_after_touch
+      - script.wait: cover_art_pause_after_touch
+      - script.execute: screensaver_wake
+
+# ---------------------------------------------------------------------------
+# Display (3.4" 640x180 QSPI AXS15231B bar panel)
+# ---------------------------------------------------------------------------
+# Native panel geometry is 180 (wide) x 640 (tall). ESPHome rejects
+# `rotation` on this display block when LVGL is present ("not compatible
+# with LVGL, please set rotation in the LVGL config instead") - the
+# rotation lives on the lvgl: block below instead. data_rate is left at the
+# AXS15231 model default (10MHz) rather than overridden, matching a
+# previously confirmed-working reference configuration for this exact
+# board.
+display:
+- platform: mipi_spi
+  id: my_display
+  spi_id: display_qspi
+  model: AXS15231
+  dimensions:
+    height: 640
+    width: 180
+  cs_pin: GPIO12
+  reset_pin: GPIO16
+  auto_clear_enabled: false
+
+# ---------------------------------------------------------------------------
+# LVGL base (display binding, must be before any page definitions)
+# ---------------------------------------------------------------------------
+# This panel is a fixed-orientation horizontal bar, so no runtime rotation
+# *feature* is wired up (unlike the square/portrait panels elsewhere in this
+# repo) - the select entity below exists only because shared common
+# packages reference its id. `rotation: 90` below is fixed, not dynamic: it
+# presents the native 180x640 panel as a 640x180 logical canvas to the rest
+# of this profile, matching a previously confirmed-working reference
+# configuration for this exact board.
+lvgl:
+  id: main_lvgl
+  rotation: 90
+  # full_refresh (below) requires the whole frame to be available to
+  # redraw as a single unit - pairing it with a fractional buffer_size
+  # hard-hung this LVGL version inside lv_display_set_buffers (watchdog
+  # abort before setup() even finished). Full-size buffer avoids that.
+  buffer_size: 100%
+  # The native panel width is 180px, which the default draw_rounding (8)
+  # does not evenly divide (180 / 8 = 22.5) - LVGL rounds the last partial
+  # flush up to 184 and writes a few rows past the real native buffer. 4
+  # does divide 180 evenly (45) while still being a valid power-of-two
+  # rounding value.
+  draw_rounding: 4
+  # This AXS15231B panel's controller mishandles some partial/dirty-rect
+  # writes with software rotation active - a garbage line remained at one
+  # edge even with draw_rounding fixed. This is a known issue on this exact
+  # board (Xinyuan-LilyGO/T-Display-S3-Long#44) - full_refresh forces every
+  # flush to redraw the whole screen at a fixed, aligned address window
+  # instead of an arbitrary partial rectangle, which is the workaround
+  # reported there for LVGL software rotation on this panel.
+  full_refresh: true
+  displays: my_display
+  touchscreens:
+  - touchscreen_id: my_touchscreen
+    long_press_time: 3s
+
+select:
+- platform: template
+  name: "${entity_screen_rotation}"
+  internal: true
+  disabled_by_default: true
+  id: screen_rotation_select
+  entity_category: config
+  icon: "mdi:screen-rotation"
+  optimistic: true
+  restore_value: true
+  initial_option: "0"
+  options:
+  - "0"
+
+# ---------------------------------------------------------------------------
+# PMU (SY6970 battery charger, shares the touchscreen I2C bus)
+# ---------------------------------------------------------------------------
+# Values below (current/voltage limits) match a previously confirmed-working
+# reference configuration for this exact board. The stock ESPHome component
+# never serviced the chip's I2C watchdog (REG07 bits 5:4, POR 40s), which
+# silently reverted charge_enabled and the STAT LED disable bit to power-on
+# defaults ~40s after every boot or toggle. The patched component loaded via
+# external_components above kicks it on every update(), so the watchdog stays
+# enabled as a safety net (update_interval must stay below the timeout).
+sy6970:
+- id: pmu
+  i2c_id: touchscreen_bus
+  address: 0x6a
+  enable_status_led: false
+  input_current_limit: 1000
+  charge_voltage: 4200
+  charge_current: 500
+  precharge_current: 128
+  charge_enabled: false
+  enable_adc: true
+  i2c_watchdog_timeout: 40S
+  update_interval: 1s
+
+# Diagnostic-only visibility into live PMU communication (dump_config above
+# only echoes configured values, not a real readback - these confirm the
+# chip is actually responding to polling, not just acknowledging its I2C
+# address at setup).
+binary_sensor:
+- platform: sy6970
+  sy6970_id: pmu
+  vbus_connected:
+    name: "Battery VBUS Connected"
+    entity_category: diagnostic
+  charging:
+    name: "Battery Charging Active"
+    entity_category: diagnostic
+  charge_done:
+    name: "Battery Charge Done"
+    entity_category: diagnostic
+
+text_sensor:
+- platform: sy6970
+  sy6970_id: pmu
+  bus_status:
+    name: "Battery Bus Status"
+    entity_category: diagnostic
+  charge_status:
+    name: "Battery Charge Status"
+    entity_category: diagnostic
+
+switch:
+- platform: template
+  name: "${entity_battery_charging_enabled}"
+  # id changed from battery_charging_enabled: an earlier flash had
+  # restore_mode: RESTORE_DEFAULT_ON, which persisted an "ON" value to
+  # flash - RESTORE_DEFAULT_* only applies when there is no persisted
+  # value yet, so switching this to RESTORE_DEFAULT_OFF alone did not
+  # take effect (still restored the stale "ON" and re-enabled charging a
+  # few seconds into boot, silently). A new id gets a fresh preference
+  # slot with no persisted value, so the new default actually applies.
+  id: pmu_charge_switch
+  icon: "mdi:battery-charging"
+  entity_category: config
+  optimistic: true
+  restore_mode: RESTORE_DEFAULT_OFF
+  web_server:
+    sorting_group_id: sg_display
+  turn_on_action:
+  - lambda: 'id(pmu).set_charge_enabled(true);'
+  turn_off_action:
+  - lambda: 'id(pmu).set_charge_enabled(false);'

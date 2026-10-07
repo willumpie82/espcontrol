@@ -124,6 +124,13 @@ export const ENTITY_CATALOG = {
       "domain": "sensor",
       "name": "Battery"
     },
+    "battery_charging_enabled": {
+      "domain": "switch",
+      "name": "Battery Charging",
+      "objectIds": [
+        "battery_charging_enabled"
+      ]
+    },
     "voice_services": {
       "domain": "switch",
       "name": "Voice Services",
@@ -809,7 +816,8 @@ export const ENTITY_CATALOG = {
     ],
     "settings_battery": [
       "screen_battery_status",
-      "battery_percent"
+      "battery_percent",
+      "battery_charging_enabled"
     ],
     "settings_voice": [
       "voice_services"

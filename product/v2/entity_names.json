@@ -24,6 +24,7 @@
     { "key": "screen_clock_bar_night_mode", "domain": "switch", "name": "Screen: Clock Bar Night Mode Icon", "objectIds": ["screen__clock_bar_night_mode_icon", "screen_clock_bar_night_mode_icon", "clock_bar_night_mode_enabled"], "groups": ["settings"] },
     { "key": "screen_battery_status", "domain": "switch", "name": "Screen: Battery Status Icon", "objectIds": ["screen__battery_status", "screen_battery_status", "battery_status_enabled"], "groups": ["settings_battery"] },
     { "key": "battery_percent", "domain": "sensor", "name": "Battery", "groups": ["settings_battery"] },
+    { "key": "battery_charging_enabled", "domain": "switch", "name": "Battery Charging", "objectIds": ["battery_charging_enabled"], "groups": ["settings_battery"] },
     { "key": "voice_services", "domain": "switch", "name": "Voice Services", "objectIds": ["voice_services", "voice_services_enabled"], "groups": ["settings_voice"] },
     { "key": "alarm_delay_audio", "domain": "switch", "name": "Alarm Delay: Audio", "objectIds": ["alarm_delay__audio", "alarm_delay_audio", "alarm_delay_audio_enabled"], "groups": ["settings_alarm_audio"] },
     { "key": "alarm_delay_tts", "domain": "switch", "name": "Alarm Delay: TTS", "objectIds": ["alarm_delay__tts", "alarm_delay_tts", "alarm_delay_tts_enabled"], "groups": ["settings_alarm_audio"] },
