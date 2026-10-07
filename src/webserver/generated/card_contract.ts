@@ -1082,6 +1082,12 @@ export const CARD_CONTRACT_CARDS: Readonly<Record<string, CardTypeSpec>> = {
         "label": "Large Clock",
         "kind": "flag",
         "omitDefault": true
+      },
+      {
+        "name": "center_clock",
+        "label": "Center Clock",
+        "kind": "flag",
+        "omitDefault": true
       }
     ],
     "normalization": {
@@ -1120,7 +1126,8 @@ export const CARD_CONTRACT_CARDS: Readonly<Record<string, CardTypeSpec>> = {
       },
       "unknownOptions": "drop",
       "canonicalOptionOrder": [
-        "large_numbers"
+        "large_numbers",
+        "center_clock"
       ],
       "optionHook": "normalize_date_time_options"
     },
@@ -1312,7 +1319,7 @@ export const CARD_CONTRACT_CARDS: Readonly<Record<string, CardTypeSpec>> = {
         "name": "climate_tabs",
         "label": "Visible Tabs",
         "kind": "text",
-        "defaultValue": "temperature|mode|preset|fan|swing",
+        "defaultValue": "temperature|mode|preset|fan|swing|horizontal_swing",
         "omitDefault": true
       }
     ],
@@ -3741,6 +3748,36 @@ export const CARD_CONTRACT_CARDS: Readonly<Record<string, CardTypeSpec>> = {
         ],
         "defaultValue": "fill",
         "omitDefault": true
+      },
+      {
+        "name": "image_modal_refresh_mode",
+        "label": "Camera refresh",
+        "kind": "choice",
+        "values": [
+          "off",
+          "periodic",
+          "activity"
+        ],
+        "defaultValue": "off",
+        "omitDefault": true
+      },
+      {
+        "name": "image_modal_refresh_interval",
+        "label": "Refresh interval",
+        "kind": "choice",
+        "values": [
+          "5",
+          "10",
+          "30"
+        ],
+        "defaultValue": "10",
+        "omitDefault": true
+      },
+      {
+        "name": "image_modal_refresh_trigger",
+        "label": "Trigger entity",
+        "kind": "text",
+        "omitDefault": true
       }
     ],
     "normalization": {
@@ -3782,7 +3819,10 @@ export const CARD_CONTRACT_CARDS: Readonly<Record<string, CardTypeSpec>> = {
       "canonicalOptionOrder": [
         "image_label",
         "image_icon",
-        "image_modal_mode"
+        "image_modal_mode",
+        "image_modal_refresh_mode",
+        "image_modal_refresh_interval",
+        "image_modal_refresh_trigger"
       ],
       "optionHook": "normalize_image_options"
     },
@@ -4711,6 +4751,7 @@ export const CARD_CONTRACT_OPTION_NAMES: Readonly<Record<string, string>> = {
   "actions": "actions",
   "active_color": "active_color",
   "alarm_card_type": "alarm_card_type",
+  "center_clock": "center_clock",
   "climate_tabs": "climate_tabs",
   "confirm_message": "confirm_message",
   "confirm_no": "confirm_no",
@@ -4734,6 +4775,9 @@ export const CARD_CONTRACT_OPTION_NAMES: Readonly<Record<string, string>> = {
   "image_icon": "image_icon",
   "image_label": "image_label",
   "image_modal_mode": "image_modal_mode",
+  "image_modal_refresh_interval": "image_modal_refresh_interval",
+  "image_modal_refresh_mode": "image_modal_refresh_mode",
+  "image_modal_refresh_trigger": "image_modal_refresh_trigger",
   "internal_mode": "internal_mode",
   "label_display": "label_display",
   "large_numbers": "large_numbers",

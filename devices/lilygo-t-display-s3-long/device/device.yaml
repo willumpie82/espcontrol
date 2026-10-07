@@ -254,9 +254,7 @@ touchscreen:
     y_min: 0
     y_max: 640
   on_touch:
-      - script.execute: cover_art_pause_after_touch
-      - script.wait: cover_art_pause_after_touch
-      - script.execute: screensaver_wake
+      - script.execute: cover_art_handle_touch
 
 # ---------------------------------------------------------------------------
 # Display (3.4" 640x180 QSPI AXS15231B bar panel)

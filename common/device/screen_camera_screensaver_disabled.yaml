@@ -1,0 +1,45 @@
+# Camera screensaver is intentionally not built on constrained displays.
+# These no-op effects keep the common display-mode orchestrator uniform while
+# legacy imported Camera selections are converted to Display Off in display.yaml.
+
+# common/config/display.yaml and screen_cover_art.yaml both reference this
+# image unconditionally (id(camera_screensaver_downloaded_image)); it is
+# never actually requested to download here, so keep its footprint minimal.
+artwork_image:
+  - url: "https://placehold.co/1x1/000000/000000.jpg"
+    id: camera_screensaver_downloaded_image
+    type: RGB565
+    buffer_size: 256
+
+# common/addon/backlight.yaml references this unconditionally too; it never
+# changes here since no camera transition ever starts.
+globals:
+  - id: camera_screensaver_transition_generation
+    type: uint32_t
+    initial_value: '0'
+
+script:
+  - id: camera_screensaver_text_refresh
+    mode: restart
+    then: []
+
+  - id: camera_screensaver_config_changed
+    mode: restart
+    then: []
+
+  - id: camera_screensaver_request_image
+    mode: restart
+    then: []
+
+  - id: display_mode_effect_camera
+    mode: restart
+    parameters:
+      generation: int
+    then: []
+
+  - id: camera_screensaver_hide_effect
+    mode: restart
+    parameters:
+      generation: int
+      target_mode: int
+    then: []

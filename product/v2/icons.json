@@ -220,6 +220,16 @@
       "mdi": "arrow-up-down"
     },
     {
+      "name": "Awning",
+      "codepoint": "F1B87",
+      "mdi": "awning"
+    },
+    {
+      "name": "Awning Outline",
+      "codepoint": "F1B88",
+      "mdi": "awning-outline"
+    },
+    {
       "name": "Battery",
       "codepoint": "F0079",
       "mdi": "battery"
@@ -675,6 +685,31 @@
       "mdi": "folder-play"
     },
     {
+      "name": "Folder Account Outline",
+      "codepoint": "F0B9C",
+      "mdi": "folder-account-outline"
+    },
+    {
+      "name": "Folder Home Outline",
+      "codepoint": "F10B6",
+      "mdi": "folder-home-outline"
+    },
+    {
+      "name": "Folder Key Outline",
+      "codepoint": "F10EC",
+      "mdi": "folder-key-outline"
+    },
+    {
+      "name": "Folder Open Outline",
+      "codepoint": "F0DCF",
+      "mdi": "folder-open-outline"
+    },
+    {
+      "name": "Folder Outline",
+      "codepoint": "F0256",
+      "mdi": "folder-outline"
+    },
+    {
       "name": "Fountain",
       "codepoint": "F096B",
       "mdi": "fountain"
@@ -955,6 +990,11 @@
       "mdi": "lightbulb-off"
     },
     {
+      "name": "Lightbulb On 50",
+      "codepoint": "F1A52",
+      "mdi": "lightbulb-on-50"
+    },
+    {
       "name": "Lightbulb On Outline",
       "codepoint": "F06E9",
       "mdi": "lightbulb-on-outline"
@@ -1003,6 +1043,11 @@
       "name": "Lock Open Outline",
       "codepoint": "F0340",
       "mdi": "lock-open-outline"
+    },
+    {
+      "name": "Lock Open Variant",
+      "codepoint": "F0FC6",
+      "mdi": "lock-open-variant"
     },
     {
       "name": "Lock Outline",
@@ -1635,6 +1680,11 @@
       "mdi": "vacuum-outline"
     },
     {
+      "name": "Vanity Light",
+      "codepoint": "F11E1",
+      "mdi": "vanity-light"
+    },
+    {
       "name": "View Headline",
       "codepoint": "F0571",
       "mdi": "view-headline"
@@ -1698,6 +1748,16 @@
       "name": "Water Percent",
       "codepoint": "F058E",
       "mdi": "water-percent"
+    },
+    {
+      "name": "Water Pump",
+      "codepoint": "F058F",
+      "mdi": "water-pump"
+    },
+    {
+      "name": "Water Pump Off",
+      "codepoint": "F0F93",
+      "mdi": "water-pump-off"
     },
     {
       "name": "Water Alert",

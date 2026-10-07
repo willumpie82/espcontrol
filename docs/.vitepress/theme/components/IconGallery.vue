@@ -27,7 +27,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import iconsData from '../../../../product/v2/icons.json'
+import { iconOptions, iconSlug } from '../../../../src/webserver/application/ui_primitives'
 
 const GROUP_ORDER = [
   'Lighting',
@@ -38,6 +38,7 @@ const GROUP_ORDER = [
   'Weather',
   'Appliances',
   'Media & Entertainment',
+  'Files & Folders',
   'Water & Outdoors',
   'Network & Tech',
   'Rooms & Furniture',
@@ -75,6 +76,7 @@ const ICON_GROUPS = {
   'Lightbulb Night': 'Lighting',
   'Lightbulb Night Outline': 'Lighting',
   'Lightbulb Off': 'Lighting',
+  'Lightbulb On 50': 'Lighting',
   'Lightbulb On Outline': 'Lighting',
   'Lightbulb Outline': 'Lighting',
   'Lightbulb Spot': 'Lighting',
@@ -92,6 +94,7 @@ const ICON_GROUPS = {
   'String Lights Off': 'Lighting',
   'Track Light': 'Lighting',
   'Track Light Off': 'Lighting',
+  'Vanity Light': 'Lighting',
   'Wall Sconce': 'Lighting',
 
   'Air Conditioner': 'Climate & Air',
@@ -133,6 +136,8 @@ const ICON_GROUPS = {
   'Arrow Up Down': 'Climate & Air',
   'Swap Horizontal': 'Climate & Air',
 
+  'Awning': 'Covers & Shading',
+  'Awning Outline': 'Covers & Shading',
   'Blinds': 'Covers & Shading',
   'Blinds Horizontal': 'Covers & Shading',
   'Blinds Horizontal Closed': 'Covers & Shading',
@@ -175,6 +180,7 @@ const ICON_GROUPS = {
   'Lock': 'Security & Access',
   'Lock Open': 'Security & Access',
   'Lock Open Outline': 'Security & Access',
+  'Lock Open Variant': 'Security & Access',
   'Lock Outline': 'Security & Access',
   'Motion Sensor': 'Security & Access',
   'Motion Sensor Off': 'Security & Access',
@@ -282,6 +288,11 @@ const ICON_GROUPS = {
   'Chef Hat': 'Appliances',
 
   'Cast': 'Media & Entertainment',
+  'Folder Account Outline': 'Files & Folders',
+  'Folder Home Outline': 'Files & Folders',
+  'Folder Key Outline': 'Files & Folders',
+  'Folder Open Outline': 'Files & Folders',
+  'Folder Outline': 'Files & Folders',
   'Folder Music Outline': 'Media & Entertainment',
   'Folder Play': 'Media & Entertainment',
   'Gamepad': 'Media & Entertainment',
@@ -339,6 +350,8 @@ const ICON_GROUPS = {
   'Water Boiler': 'Water & Outdoors',
   'Water Boiler Off': 'Water & Outdoors',
   'Water Percent': 'Water & Outdoors',
+  'Water Pump': 'Water & Outdoors',
+  'Water Pump Off': 'Water & Outdoors',
   'Shower Head': 'Water & Outdoors',
 
   'Application': 'Network & Tech',
@@ -386,6 +399,7 @@ const ICON_GROUPS = {
   'Pill Multiple': 'Health',
 
   'Account': 'General',
+  'Auto': 'General',
   'Bird': 'General',
   'Broom': 'General',
   'Cat': 'General',
@@ -414,7 +428,7 @@ const ICON_GROUPS = {
   'Video Outline': 'Media & Entertainment',
 }
 
-const icons = iconsData.icons
+const icons = iconOptions.map(name => ({ name, mdi: iconSlug(name) }))
 const search = ref('')
 const copiedName = ref(null)
 let copyTimer = null

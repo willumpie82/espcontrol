@@ -2,13 +2,14 @@
   "schemaVersion": 1,
   "bundles": [
     {
-      "id": "e0ba4d202fd33d964dc4cd8d55334a5b1dd10010ee99836617cafe22ae3d56f9",
-      "sha256": "e0ba4d202fd33d964dc4cd8d55334a5b1dd10010ee99836617cafe22ae3d56f9",
-      "path": "bundles/e0ba4d202fd33d964dc4cd8d55334a5b1dd10010ee99836617cafe22ae3d56f9/www.js",
+      "id": "e541c0ce275fa2bf27beae0dbd154419d8c50ffe7db997c95458a15a895ac1e9",
+      "sha256": "e541c0ce275fa2bf27beae0dbd154419d8c50ffe7db997c95458a15a895ac1e9",
+      "path": "bundles/e541c0ce275fa2bf27beae0dbd154419d8c50ffe7db997c95458a15a895ac1e9/www.js",
       "deviceProfiles": [
         "guition-esp32-p4-jc1060p470",
         "guition-esp32-p4-jc1060p470-v2",
         "guition-esp32-p4-jc4880p443",
+        "guition-esp32-p4-jc4880p443-v3",
         "guition-esp32-p4-jc8012p4a1",
         "guition-esp32-p4-jc8012p4a1-v2",
         "guition-esp32-p4-jc8012p4a1-v3",
@@ -17,23 +18,19 @@
         "lilygo-t-display-s3-long"
       ],
       "firmwareVersions": [
-        "dev",
-        "v2.9.1",
-        "v2.9.0",
-        "v2.8.6",
-        "v2.8.4",
-        "v2.8.3"
+        "dev"
       ],
       "webAssetVersion": 2
     },
     {
-      "id": "e0ba4d202fd33d964dc4cd8d55334a5b1dd10010ee99836617cafe22ae3d56f9",
-      "sha256": "e0ba4d202fd33d964dc4cd8d55334a5b1dd10010ee99836617cafe22ae3d56f9",
-      "path": "bundles/e0ba4d202fd33d964dc4cd8d55334a5b1dd10010ee99836617cafe22ae3d56f9/www.js",
+      "id": "e541c0ce275fa2bf27beae0dbd154419d8c50ffe7db997c95458a15a895ac1e9",
+      "sha256": "e541c0ce275fa2bf27beae0dbd154419d8c50ffe7db997c95458a15a895ac1e9",
+      "path": "bundles/e541c0ce275fa2bf27beae0dbd154419d8c50ffe7db997c95458a15a895ac1e9/www.js",
       "deviceProfiles": [
         "guition-esp32-p4-jc1060p470",
         "guition-esp32-p4-jc1060p470-v2",
         "guition-esp32-p4-jc4880p443",
+        "guition-esp32-p4-jc4880p443-v3",
         "guition-esp32-p4-jc8012p4a1",
         "guition-esp32-p4-jc8012p4a1-v2",
         "guition-esp32-p4-jc8012p4a1-v3",
@@ -42,12 +39,57 @@
         "lilygo-t-display-s3-long"
       ],
       "firmwareVersions": [
-        "dev",
+        "dev"
+      ],
+      "webAssetVersion": 1
+    },
+    {
+      "id": "42f3fd87eb8cbfab59943a7643a19416ded29eddb8608498ada20e95b416fd49",
+      "sha256": "42f3fd87eb8cbfab59943a7643a19416ded29eddb8608498ada20e95b416fd49",
+      "path": "bundles/42f3fd87eb8cbfab59943a7643a19416ded29eddb8608498ada20e95b416fd49/www.js",
+      "deviceProfiles": [
+        "guition-esp32-p4-jc1060p470",
+        "guition-esp32-p4-jc1060p470-v2",
+        "guition-esp32-p4-jc4880p443",
+        "guition-esp32-p4-jc4880p443-v3",
+        "guition-esp32-p4-jc8012p4a1",
+        "guition-esp32-p4-jc8012p4a1-v2",
+        "guition-esp32-p4-jc8012p4a1-v3",
+        "esp32-p4-86",
+        "guition-esp32-s3-4848s040",
+        "lilygo-t-display-s3-long"
+      ],
+      "firmwareVersions": [
+        "v2.10.0",
         "v2.9.1",
         "v2.9.0",
         "v2.8.6",
-        "v2.8.4",
-        "v2.8.3"
+        "v2.8.4"
+      ],
+      "webAssetVersion": 2
+    },
+    {
+      "id": "42f3fd87eb8cbfab59943a7643a19416ded29eddb8608498ada20e95b416fd49",
+      "sha256": "42f3fd87eb8cbfab59943a7643a19416ded29eddb8608498ada20e95b416fd49",
+      "path": "bundles/42f3fd87eb8cbfab59943a7643a19416ded29eddb8608498ada20e95b416fd49/www.js",
+      "deviceProfiles": [
+        "guition-esp32-p4-jc1060p470",
+        "guition-esp32-p4-jc1060p470-v2",
+        "guition-esp32-p4-jc4880p443",
+        "guition-esp32-p4-jc4880p443-v3",
+        "guition-esp32-p4-jc8012p4a1",
+        "guition-esp32-p4-jc8012p4a1-v2",
+        "guition-esp32-p4-jc8012p4a1-v3",
+        "esp32-p4-86",
+        "guition-esp32-s3-4848s040",
+        "lilygo-t-display-s3-long"
+      ],
+      "firmwareVersions": [
+        "v2.10.0",
+        "v2.9.1",
+        "v2.9.0",
+        "v2.8.6",
+        "v2.8.4"
       ],
       "webAssetVersion": 1
     }
