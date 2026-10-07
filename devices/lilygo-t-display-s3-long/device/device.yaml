@@ -37,12 +37,16 @@ external_components:
   components: [ espcontrol, web_server_idf, artwork_image ]
   refresh: 1s
 # Patched sy6970 (auto-kicks the chip's I2C watchdog, adds i2c_watchdog_timeout).
-# Loaded from the ESPHome fork branch that backs the upstream PR, overriding the
-# built-in component; drop this entry once the fix ships in an ESPHome release.
+# Backs esphome/esphome#19424 (not yet merged). Pinned to a fixed commit on a
+# branch based on the 2026.9.1 release tag - NOT the PR's own branch, which
+# tracks ESPHome dev and once pulled in a dev-only core API (sub_binary_sensors,
+# added post-2026.9.1) that broke compiling against the current stable release.
+# Re-pin if the pinned commit's branch is rebased, and drop this whole entry
+# once the fix ships in an ESPHome release.
 - source:
     type: git
     url: https://github.com/willumpie82/esphome
-    ref: sy6970-i2c-watchdog
+    ref: 362b4d6cc18e9817881d356dbbf85c012b3a6840
   components: [ sy6970 ]
 
 espcontrol:
