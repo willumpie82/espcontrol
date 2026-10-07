@@ -24,6 +24,11 @@ esp32:
     # pioarduino 55.03.38-1 pulls tool-esptoolpy 5.2.0, which can install
     # incompletely in ESPHome containers and then fail while creating .bin files.
     #platform_version: 55.03.37
+    advanced:
+      # The clock/cover-art display controller uses a deep ESPHome action chain.
+      # Keep enough headroom for rapid presence-driven sleep/wake transitions;
+      # the 8 KiB default can overflow loopTask on this profile.
+      loop_task_stack_size: 16384
     sdkconfig_options:
       # The S3 display stack leaves little internal RAM for HTTPS OTA checks.
       # Allocate mbedTLS buffers from PSRAM so firmware downloads can connect.
@@ -438,7 +443,11 @@ lvgl:
   id: main_lvgl
   # Keep LVGL after WiFi and after the display driver.
   setup_priority: 230
-  buffer_size: 12%
+  # A full-frame buffer avoids splitting page redraws into many small regions.
+  # At 90/270 degrees ESPHome rotates each rendered region in software; one
+  # full-frame rotation is substantially cheaper than repeatedly rotating the
+  # same page in partial chunks on the S3's PSRAM-backed display stack.
+  buffer_size: 100%
   displays: my_display
   rotation: 180
   touchscreens:

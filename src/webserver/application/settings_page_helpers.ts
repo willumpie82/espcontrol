@@ -70,6 +70,11 @@ export interface SettingsPageHelpersFeature {
     createEntityToggleSection(...args: any[]): any;
 }
 
+export function formatHomeAssistantArtworkEndpointStatus(status: string): string {
+    const normalized = String(status || "").trim();
+    return normalized.replace(/^(?:Automatic|Fallback|Manual)\s*[—-]\s*/i, "").trim() || "Discovering";
+}
+
 export function createSettingsPageHelpersFeature(
     controllers: SettingsPageHelpersControllers,
 ): SettingsPageHelpersFeature {
@@ -194,6 +199,8 @@ export function createSettingsPageHelpersFeature(
         var uiState: any = _alarmDelayAudioController.uiState(audioState);
         if (els.setAlarmDelayAudioToggle)
             els.setAlarmDelayAudioToggle.checked = !!state.alarmDelayAudioOn;
+        if (els.setAlarmDelayAudioBadge)
+            els.setAlarmDelayAudioBadge.className = "sp-card-badge" + (state.alarmDelayAudioOn ? "" : " sp-hidden");
         if (els.setAlarmDelayTtsToggle)
             els.setAlarmDelayTtsToggle.checked = !!state.alarmDelayTtsOn;
         if (els.alarmDelayAudioOptions)
@@ -319,8 +326,10 @@ export function createSettingsPageHelpersFeature(
         body.appendChild(infoPanel(
             "sp-alarm-delay-audio-info",
             "Entry and exit beeps use the panel speaker. TTS is sent as a Home Assistant announcement event only while Voice Services are enabled."));
+        var badge: any = statusBadge("Alarm audio on");
+        els.setAlarmDelayAudioBadge = badge;
         syncAlarmDelayAudioUi();
-        return makeCollapsibleCard("Alarm Audio", body, true);
+        return makeCollapsibleCard("Alarm Audio", body, true, badge);
     }
     function coverArtTrackOverlayDurationSupported(this: any) {
         return !!controllers.layout.config.coverArtSquareOverlay;
@@ -452,10 +461,21 @@ export function createSettingsPageHelpersFeature(
             els.setHomeAssistantArtworkEndpointMode.value = state.homeAssistantArtworkEndpointMode;
         }
         var manualEndpoint: any = state.homeAssistantArtworkEndpointMode === "Manual";
+        if (els.setHomeAssistantArtworkProtocolField) {
+            els.setHomeAssistantArtworkProtocolField.classList.toggle("sp-hidden", !manualEndpoint);
+        }
+        if (els.setCoverArtHomeAssistantPortField) {
+            els.setCoverArtHomeAssistantPortField.classList.toggle("sp-hidden", !manualEndpoint);
+        }
         if (els.setHomeAssistantArtworkProtocol) els.setHomeAssistantArtworkProtocol.disabled = !manualEndpoint;
         if (els.setCoverArtHomeAssistantPort) els.setCoverArtHomeAssistantPort.disabled = !manualEndpoint;
         if (els.homeAssistantArtworkEndpointStatus) {
-            els.homeAssistantArtworkEndpointStatus.textContent = state.homeAssistantArtworkEndpointStatus || "Discovering";
+            var endpointStatus: any = formatHomeAssistantArtworkEndpointStatus(state.homeAssistantArtworkEndpointStatus);
+            if (els.homeAssistantArtworkEndpointStatusOutput) {
+                els.homeAssistantArtworkEndpointStatusOutput.textContent = endpointStatus;
+            } else {
+                els.homeAssistantArtworkEndpointStatus.textContent = endpointStatus;
+            }
         }
         if (els.setCoverArtFilterToggle) {
             els.setCoverArtFilterToggle.checked = !!state.coverArtFilteringEnabled;

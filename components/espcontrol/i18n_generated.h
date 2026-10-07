@@ -56,6 +56,7 @@ inline const char *espcontrol_i18n_cs(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Směr";
   if (std::strcmp(text, "Disarm") == 0) return "Odzajistit";
   if (std::strcmp(text, "Disarmed") == 0) return "Odzajištěno";
+  if (std::strcmp(text, "Disconnected") == 0) return "Odpojeno";
   if (std::strcmp(text, "Door") == 0) return "Dveře";
   if (std::strcmp(text, "Door Open") == 0) return "Dveře otevřeny";
   if (std::strcmp(text, "Dock") == 0) return "Dokovat";
@@ -185,6 +186,7 @@ inline const char *espcontrol_i18n_cs(const char *text) {
   if (std::strcmp(text, "Unsupported") == 0) return "Nepodporováno";
   if (std::strcmp(text, "Vacuum") == 0) return "Vysavač";
   if (std::strcmp(text, "Version unknown") == 0) return "Verze neznámá";
+  if (std::strcmp(text, "Voice") == 0) return "Hlas";
   if (std::strcmp(text, "Volume") == 0) return "Hlasitost";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Čekání na Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Připojování k \nHome Assistant";
@@ -242,6 +244,14 @@ inline const char *espcontrol_i18n_cs(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Seskupení se nezdařilo";
   if (std::strcmp(text, "Speakers updated") == 0) return "Reproduktory aktualizovány";
   if (std::strcmp(text, "Updating speakers") == 0) return "Aktualizace reproduktorů";
+  if (std::strcmp(text, "Settings") == 0) return "Nastavení";
+  if (std::strcmp(text, "Brightness") == 0) return "Jas";
+  if (std::strcmp(text, "Daytime") == 0) return "Den";
+  if (std::strcmp(text, "Nighttime") == 0) return "Noc";
+  if (std::strcmp(text, "Timer") == 0) return "Časovač";
+  if (std::strcmp(text, "Confirm") == 0) return "Potvrdit";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Wi-Fi pro hosty";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "Stav Wi-Fi se nezměnil";
   return text;
 }
 
@@ -286,6 +296,7 @@ inline const char *espcontrol_i18n_da(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Retning";
   if (std::strcmp(text, "Disarm") == 0) return "Deaktiver";
   if (std::strcmp(text, "Disarmed") == 0) return "Deaktiveret";
+  if (std::strcmp(text, "Disconnected") == 0) return "Afbrudt";
   if (std::strcmp(text, "Door") == 0) return "Dør";
   if (std::strcmp(text, "Door Open") == 0) return "Dør åben";
   if (std::strcmp(text, "Docked") == 0) return "Docket";
@@ -409,6 +420,7 @@ inline const char *espcontrol_i18n_da(const char *text) {
   if (std::strcmp(text, "Unsupported") == 0) return "Ikke understøttet";
   if (std::strcmp(text, "Vacuum") == 0) return "Støvsuger";
   if (std::strcmp(text, "Version unknown") == 0) return "Version ukendt";
+  if (std::strcmp(text, "Voice") == 0) return "Stemme";
   if (std::strcmp(text, "Volume") == 0) return "Lydstyrke";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Venter på Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Opretter forbindelse til \nHome Assistant";
@@ -466,6 +478,13 @@ inline const char *espcontrol_i18n_da(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Gruppering mislykkedes";
   if (std::strcmp(text, "Speakers updated") == 0) return "Højttalere opdateret";
   if (std::strcmp(text, "Updating speakers") == 0) return "Opdaterer højttalere";
+  if (std::strcmp(text, "Settings") == 0) return "Indstillinger";
+  if (std::strcmp(text, "Brightness") == 0) return "Lysstyrke";
+  if (std::strcmp(text, "Daytime") == 0) return "Dagtid";
+  if (std::strcmp(text, "Nighttime") == 0) return "Nattetid";
+  if (std::strcmp(text, "Confirm") == 0) return "Bekræft";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Gæste-Wi-Fi";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "Wi-Fi blev ikke ændret";
   return text;
 }
 
@@ -511,6 +530,7 @@ inline const char *espcontrol_i18n_de(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Richtung";
   if (std::strcmp(text, "Disarm") == 0) return "Entschärfen";
   if (std::strcmp(text, "Disarmed") == 0) return "Entschärft";
+  if (std::strcmp(text, "Disconnected") == 0) return "Getrennt";
   if (std::strcmp(text, "Door") == 0) return "Tür";
   if (std::strcmp(text, "Door Open") == 0) return "Tür offen";
   if (std::strcmp(text, "Dock") == 0) return "Andocken";
@@ -631,6 +651,7 @@ inline const char *espcontrol_i18n_de(const char *text) {
   if (std::strcmp(text, "Unsupported") == 0) return "Nicht unterstützt";
   if (std::strcmp(text, "Vacuum") == 0) return "Staubsauger";
   if (std::strcmp(text, "Version unknown") == 0) return "Version unbekannt";
+  if (std::strcmp(text, "Voice") == 0) return "Sprache";
   if (std::strcmp(text, "Volume") == 0) return "Lautstärke";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Warten auf Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Verbindung mit \nHome Assistant wird hergestellt";
@@ -688,6 +709,13 @@ inline const char *espcontrol_i18n_de(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Gruppierung fehlgeschlagen";
   if (std::strcmp(text, "Speakers updated") == 0) return "Lautsprecher aktualisiert";
   if (std::strcmp(text, "Updating speakers") == 0) return "Lautsprecher werden aktualisiert";
+  if (std::strcmp(text, "Settings") == 0) return "Einstellungen";
+  if (std::strcmp(text, "Brightness") == 0) return "Helligkeit";
+  if (std::strcmp(text, "Daytime") == 0) return "Tagsüber";
+  if (std::strcmp(text, "Nighttime") == 0) return "Nachts";
+  if (std::strcmp(text, "Confirm") == 0) return "Bestätigen";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Gast-WLAN";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "WLAN wurde nicht geändert";
   return text;
 }
 
@@ -733,6 +761,7 @@ inline const char *espcontrol_i18n_es(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Dirección";
   if (std::strcmp(text, "Disarm") == 0) return "Desarmar";
   if (std::strcmp(text, "Disarmed") == 0) return "Desarmada";
+  if (std::strcmp(text, "Disconnected") == 0) return "Desconectado";
   if (std::strcmp(text, "Door") == 0) return "Puerta";
   if (std::strcmp(text, "Door Open") == 0) return "Puerta abierta";
   if (std::strcmp(text, "Dock") == 0) return "Acoplar";
@@ -860,6 +889,7 @@ inline const char *espcontrol_i18n_es(const char *text) {
   if (std::strcmp(text, "Unsupported") == 0) return "No compatible";
   if (std::strcmp(text, "Vacuum") == 0) return "Aspiradora";
   if (std::strcmp(text, "Version unknown") == 0) return "Versión desconocida";
+  if (std::strcmp(text, "Voice") == 0) return "Voz";
   if (std::strcmp(text, "Volume") == 0) return "Volumen";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Esperando a Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Conectando a \nHome Assistant";
@@ -917,6 +947,14 @@ inline const char *espcontrol_i18n_es(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Error al agrupar";
   if (std::strcmp(text, "Speakers updated") == 0) return "Altavoces actualizados";
   if (std::strcmp(text, "Updating speakers") == 0) return "Actualizando altavoces";
+  if (std::strcmp(text, "Settings") == 0) return "Ajustes";
+  if (std::strcmp(text, "Brightness") == 0) return "Brillo";
+  if (std::strcmp(text, "Daytime") == 0) return "Día";
+  if (std::strcmp(text, "Nighttime") == 0) return "Noche";
+  if (std::strcmp(text, "Timer") == 0) return "Temporizador";
+  if (std::strcmp(text, "Confirm") == 0) return "Confirmar";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Wi-Fi de invitados";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "El Wi-Fi no ha cambiado";
   return text;
 }
 
@@ -964,6 +1002,7 @@ inline const char *espcontrol_i18n_fi(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Suunta";
   if (std::strcmp(text, "Disarm") == 0) return "Poista viritys";
   if (std::strcmp(text, "Disarmed") == 0) return "Poistettu käytöstä";
+  if (std::strcmp(text, "Disconnected") == 0) return "Yhteys katkaistu";
   if (std::strcmp(text, "Door") == 0) return "Ovi";
   if (std::strcmp(text, "Door Open") == 0) return "Ovi auki";
   if (std::strcmp(text, "Dock") == 0) return "Telakoi";
@@ -1099,6 +1138,7 @@ inline const char *espcontrol_i18n_fi(const char *text) {
   if (std::strcmp(text, "Vacationhold") == 0) return "Lomapito";
   if (std::strcmp(text, "Vacuum") == 0) return "Imuri";
   if (std::strcmp(text, "Version unknown") == 0) return "Versio tuntematon";
+  if (std::strcmp(text, "Voice") == 0) return "Puhe";
   if (std::strcmp(text, "Volume") == 0) return "Äänenvoimakkuus";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Odotetaan Home Assistantia";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Yhdistetään \nHome Assistantiin";
@@ -1156,6 +1196,14 @@ inline const char *espcontrol_i18n_fi(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Ryhmittely epäonnistui";
   if (std::strcmp(text, "Speakers updated") == 0) return "Kaiuttimet päivitetty";
   if (std::strcmp(text, "Updating speakers") == 0) return "Päivitetään kaiuttimia";
+  if (std::strcmp(text, "Settings") == 0) return "Asetukset";
+  if (std::strcmp(text, "Brightness") == 0) return "Kirkkaus";
+  if (std::strcmp(text, "Daytime") == 0) return "Päivä";
+  if (std::strcmp(text, "Nighttime") == 0) return "Yö";
+  if (std::strcmp(text, "Timer") == 0) return "Ajastin";
+  if (std::strcmp(text, "Confirm") == 0) return "Vahvista";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Vieras-Wi-Fi";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "Wi-Fi ei muuttunut";
   return text;
 }
 
@@ -1198,6 +1246,7 @@ inline const char *espcontrol_i18n_fr(const char *text) {
   if (std::strcmp(text, "Dimmed") == 0) return "Tamisé";
   if (std::strcmp(text, "Disarm") == 0) return "Désarmer";
   if (std::strcmp(text, "Disarmed") == 0) return "Désarmé";
+  if (std::strcmp(text, "Disconnected") == 0) return "Déconnecté";
   if (std::strcmp(text, "Door") == 0) return "Porte";
   if (std::strcmp(text, "Door Open") == 0) return "Porte ouverte";
   if (std::strcmp(text, "Dock") == 0) return "Station";
@@ -1322,6 +1371,7 @@ inline const char *espcontrol_i18n_fr(const char *text) {
   if (std::strcmp(text, "Unsupported") == 0) return "Non pris en charge";
   if (std::strcmp(text, "Vacuum") == 0) return "Aspirateur";
   if (std::strcmp(text, "Version unknown") == 0) return "Version inconnue";
+  if (std::strcmp(text, "Voice") == 0) return "Voix";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "En attente de Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Connexion à \nHome Assistant";
   if (std::strcmp(text, "Weather") == 0) return "Météo";
@@ -1378,6 +1428,14 @@ inline const char *espcontrol_i18n_fr(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Échec du regroupement";
   if (std::strcmp(text, "Speakers updated") == 0) return "Enceintes mises à jour";
   if (std::strcmp(text, "Updating speakers") == 0) return "Mise à jour des enceintes";
+  if (std::strcmp(text, "Settings") == 0) return "Paramètres";
+  if (std::strcmp(text, "Brightness") == 0) return "Luminosité";
+  if (std::strcmp(text, "Daytime") == 0) return "Jour";
+  if (std::strcmp(text, "Nighttime") == 0) return "Nuit";
+  if (std::strcmp(text, "Timer") == 0) return "Minuteur";
+  if (std::strcmp(text, "Confirm") == 0) return "Confirmer";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Wi-Fi invité";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "Le Wi-Fi n’a pas changé";
   return text;
 }
 
@@ -1428,6 +1486,7 @@ inline const char *espcontrol_i18n_he(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "כיוון";
   if (std::strcmp(text, "Disarm") == 0) return "נטרול";
   if (std::strcmp(text, "Disarmed") == 0) return "מנוטרל";
+  if (std::strcmp(text, "Disconnected") == 0) return "מנותק";
   if (std::strcmp(text, "Door") == 0) return "דלת";
   if (std::strcmp(text, "Door Open") == 0) return "דלת פתוחה";
   if (std::strcmp(text, "Dock") == 0) return "עגינה";
@@ -1567,6 +1626,7 @@ inline const char *espcontrol_i18n_he(const char *text) {
   if (std::strcmp(text, "Vacationhold") == 0) return "החזקת חופשה";
   if (std::strcmp(text, "Vacuum") == 0) return "שואב אבק";
   if (std::strcmp(text, "Version unknown") == 0) return "גרסה לא ידועה";
+  if (std::strcmp(text, "Voice") == 0) return "קול";
   if (std::strcmp(text, "Volume") == 0) return "עוצמה";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "ממתין ל-Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "מתחבר אל\nHome Assistant";
@@ -1625,6 +1685,14 @@ inline const char *espcontrol_i18n_he(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "הקיבוץ נכשל";
   if (std::strcmp(text, "Speakers updated") == 0) return "הרמקולים עודכנו";
   if (std::strcmp(text, "Updating speakers") == 0) return "מעדכן רמקולים";
+  if (std::strcmp(text, "Settings") == 0) return "הגדרות";
+  if (std::strcmp(text, "Brightness") == 0) return "בהירות";
+  if (std::strcmp(text, "Daytime") == 0) return "יום";
+  if (std::strcmp(text, "Nighttime") == 0) return "לילה";
+  if (std::strcmp(text, "Timer") == 0) return "טיימר";
+  if (std::strcmp(text, "Confirm") == 0) return "לאשר";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "רשת Wi-Fi לאורחים";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "מצב ה-Wi-Fi לא השתנה";
   return text;
 }
 
@@ -1672,6 +1740,7 @@ inline const char *espcontrol_i18n_hu(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Irány";
   if (std::strcmp(text, "Disarm") == 0) return "Hatástalanítás";
   if (std::strcmp(text, "Disarmed") == 0) return "Hatástalanítva";
+  if (std::strcmp(text, "Disconnected") == 0) return "Lekapcsolva";
   if (std::strcmp(text, "Door") == 0) return "Ajtó";
   if (std::strcmp(text, "Door Open") == 0) return "Ajtó nyitva";
   if (std::strcmp(text, "Dock") == 0) return "Dokkolás";
@@ -1807,6 +1876,7 @@ inline const char *espcontrol_i18n_hu(const char *text) {
   if (std::strcmp(text, "Vacationhold") == 0) return "Vakációs tartás";
   if (std::strcmp(text, "Vacuum") == 0) return "Porszívó";
   if (std::strcmp(text, "Version unknown") == 0) return "Ismeretlen verzió";
+  if (std::strcmp(text, "Voice") == 0) return "Hang";
   if (std::strcmp(text, "Volume") == 0) return "Hangerő";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Várakozás a Home Assistantra";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Csatlakozás a \nHome Assistanthez";
@@ -1864,6 +1934,14 @@ inline const char *espcontrol_i18n_hu(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "A csoportosítás sikertelen";
   if (std::strcmp(text, "Speakers updated") == 0) return "Hangszórók frissítve";
   if (std::strcmp(text, "Updating speakers") == 0) return "Hangszórók frissítése";
+  if (std::strcmp(text, "Settings") == 0) return "Beállítások";
+  if (std::strcmp(text, "Brightness") == 0) return "Fényerő";
+  if (std::strcmp(text, "Daytime") == 0) return "Nappal";
+  if (std::strcmp(text, "Nighttime") == 0) return "Éjszaka";
+  if (std::strcmp(text, "Timer") == 0) return "Időzítő";
+  if (std::strcmp(text, "Confirm") == 0) return "Megerősítés";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Vendég Wi-Fi";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "A Wi-Fi állapota nem változott";
   return text;
 }
 
@@ -1909,6 +1987,7 @@ inline const char *espcontrol_i18n_it(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Direzione";
   if (std::strcmp(text, "Disarm") == 0) return "Disinserisci";
   if (std::strcmp(text, "Disarmed") == 0) return "Disinserito";
+  if (std::strcmp(text, "Disconnected") == 0) return "Disconnesso";
   if (std::strcmp(text, "Door") == 0) return "Porta";
   if (std::strcmp(text, "Door Open") == 0) return "Porta aperta";
   if (std::strcmp(text, "Docked") == 0) return "In base";
@@ -2039,6 +2118,7 @@ inline const char *espcontrol_i18n_it(const char *text) {
   if (std::strcmp(text, "Vacationhold") == 0) return "Vacanza";
   if (std::strcmp(text, "Vacuum") == 0) return "Aspirapolvere";
   if (std::strcmp(text, "Version unknown") == 0) return "Versione sconosciuta";
+  if (std::strcmp(text, "Voice") == 0) return "Voce";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "In attesa di Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Connessione a \nHome Assistant";
   if (std::strcmp(text, "Weather") == 0) return "Meteo";
@@ -2094,6 +2174,13 @@ inline const char *espcontrol_i18n_it(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Raggruppamento non riuscito";
   if (std::strcmp(text, "Speakers updated") == 0) return "Altoparlanti aggiornati";
   if (std::strcmp(text, "Updating speakers") == 0) return "Aggiornamento altoparlanti";
+  if (std::strcmp(text, "Settings") == 0) return "Impostazioni";
+  if (std::strcmp(text, "Brightness") == 0) return "Luminosità";
+  if (std::strcmp(text, "Daytime") == 0) return "Giorno";
+  if (std::strcmp(text, "Nighttime") == 0) return "Notte";
+  if (std::strcmp(text, "Confirm") == 0) return "Confermare";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Wi-Fi ospiti";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "Il Wi-Fi non è cambiato";
   return text;
 }
 
@@ -2138,6 +2225,7 @@ inline const char *espcontrol_i18n_nb(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Retning";
   if (std::strcmp(text, "Disarm") == 0) return "Deaktiver";
   if (std::strcmp(text, "Disarmed") == 0) return "Deaktivert";
+  if (std::strcmp(text, "Disconnected") == 0) return "Frakoblet";
   if (std::strcmp(text, "Door") == 0) return "Dør";
   if (std::strcmp(text, "Door Open") == 0) return "Dør åpen";
   if (std::strcmp(text, "Dock") == 0) return "Dokking";
@@ -2264,6 +2352,7 @@ inline const char *espcontrol_i18n_nb(const char *text) {
   if (std::strcmp(text, "Unsupported") == 0) return "Støttes ikke";
   if (std::strcmp(text, "Vacuum") == 0) return "Støvsuger";
   if (std::strcmp(text, "Version unknown") == 0) return "Ukjent versjon";
+  if (std::strcmp(text, "Voice") == 0) return "Stemme";
   if (std::strcmp(text, "Volume") == 0) return "Volum";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Venter på Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Kobler til \nHome Assistant";
@@ -2321,6 +2410,14 @@ inline const char *espcontrol_i18n_nb(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Gruppering mislyktes";
   if (std::strcmp(text, "Speakers updated") == 0) return "Høyttalere oppdatert";
   if (std::strcmp(text, "Updating speakers") == 0) return "Oppdaterer høyttalere";
+  if (std::strcmp(text, "Settings") == 0) return "Innstillinger";
+  if (std::strcmp(text, "Brightness") == 0) return "Lysstyrke";
+  if (std::strcmp(text, "Daytime") == 0) return "Dagtid";
+  if (std::strcmp(text, "Nighttime") == 0) return "Nattetid";
+  if (std::strcmp(text, "Timer") == 0) return "Tidtaker";
+  if (std::strcmp(text, "Confirm") == 0) return "Bekreft";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Gjeste-Wi-Fi";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "Wi-Fi ble ikke endret";
   return text;
 }
 
@@ -2367,6 +2464,7 @@ inline const char *espcontrol_i18n_nl(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Richting";
   if (std::strcmp(text, "Disarm") == 0) return "Uitschakelen";
   if (std::strcmp(text, "Disarmed") == 0) return "Uitgeschakeld";
+  if (std::strcmp(text, "Disconnected") == 0) return "Verbroken";
   if (std::strcmp(text, "Door") == 0) return "Deur";
   if (std::strcmp(text, "Door Open") == 0) return "Deur open";
   if (std::strcmp(text, "Dock") == 0) return "Docken";
@@ -2494,6 +2592,7 @@ inline const char *espcontrol_i18n_nl(const char *text) {
   if (std::strcmp(text, "Unsupported") == 0) return "Niet ondersteund";
   if (std::strcmp(text, "Vacuum") == 0) return "Stofzuiger";
   if (std::strcmp(text, "Version unknown") == 0) return "Versie onbekend";
+  if (std::strcmp(text, "Voice") == 0) return "Spraak";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Wachten op Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Verbinden met \nHome Assistant";
   if (std::strcmp(text, "Weather") == 0) return "Weer";
@@ -2549,6 +2648,13 @@ inline const char *espcontrol_i18n_nl(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Groeperen mislukt";
   if (std::strcmp(text, "Speakers updated") == 0) return "Luidsprekers bijgewerkt";
   if (std::strcmp(text, "Updating speakers") == 0) return "Luidsprekers bijwerken";
+  if (std::strcmp(text, "Settings") == 0) return "Instellingen";
+  if (std::strcmp(text, "Brightness") == 0) return "Helderheid";
+  if (std::strcmp(text, "Daytime") == 0) return "Overdag";
+  if (std::strcmp(text, "Nighttime") == 0) return "Nacht";
+  if (std::strcmp(text, "Confirm") == 0) return "Bevestigen";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Gastwifi";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "Wifi is niet gewijzigd";
   return text;
 }
 
@@ -2593,6 +2699,7 @@ inline const char *espcontrol_i18n_pl(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Kierunek";
   if (std::strcmp(text, "Disarm") == 0) return "Rozbrój";
   if (std::strcmp(text, "Disarmed") == 0) return "Rozbrojony";
+  if (std::strcmp(text, "Disconnected") == 0) return "Rozłączone";
   if (std::strcmp(text, "Door") == 0) return "Drzwi";
   if (std::strcmp(text, "Door Open") == 0) return "Drzwi otwarte";
   if (std::strcmp(text, "Dock") == 0) return "Dokuj";
@@ -2719,6 +2826,7 @@ inline const char *espcontrol_i18n_pl(const char *text) {
   if (std::strcmp(text, "Unsupported") == 0) return "Nieobsługiwane";
   if (std::strcmp(text, "Vacuum") == 0) return "Odkurzacz";
   if (std::strcmp(text, "Version unknown") == 0) return "Wersja nieznana";
+  if (std::strcmp(text, "Voice") == 0) return "Głos";
   if (std::strcmp(text, "Volume") == 0) return "Głośność";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Oczekiwanie na Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Łączenie z \nHome Assistant";
@@ -2776,6 +2884,14 @@ inline const char *espcontrol_i18n_pl(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Grupowanie nie powiodło się";
   if (std::strcmp(text, "Speakers updated") == 0) return "Głośniki zaktualizowane";
   if (std::strcmp(text, "Updating speakers") == 0) return "Aktualizowanie głośników";
+  if (std::strcmp(text, "Settings") == 0) return "Ustawienia";
+  if (std::strcmp(text, "Brightness") == 0) return "Jasność";
+  if (std::strcmp(text, "Daytime") == 0) return "Dzień";
+  if (std::strcmp(text, "Nighttime") == 0) return "Noc";
+  if (std::strcmp(text, "Timer") == 0) return "Minutnik";
+  if (std::strcmp(text, "Confirm") == 0) return "Potwierdzić";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Wi-Fi dla gości";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "Stan Wi-Fi nie zmienił się";
   return text;
 }
 
@@ -2821,6 +2937,7 @@ inline const char *espcontrol_i18n_pt_br(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Direção";
   if (std::strcmp(text, "Disarm") == 0) return "Desarmar";
   if (std::strcmp(text, "Disarmed") == 0) return "Desarmado";
+  if (std::strcmp(text, "Disconnected") == 0) return "Desconectado";
   if (std::strcmp(text, "Door") == 0) return "Porta";
   if (std::strcmp(text, "Door Open") == 0) return "Porta aberta";
   if (std::strcmp(text, "Docked") == 0) return "Na base";
@@ -2949,6 +3066,7 @@ inline const char *espcontrol_i18n_pt_br(const char *text) {
   if (std::strcmp(text, "Unsupported") == 0) return "Não suportado";
   if (std::strcmp(text, "Vacuum") == 0) return "Aspirador";
   if (std::strcmp(text, "Version unknown") == 0) return "Versão desconhecida";
+  if (std::strcmp(text, "Voice") == 0) return "Voz";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Aguardando o Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Conectando ao \nHome Assistant";
   if (std::strcmp(text, "Weather") == 0) return "Tempo";
@@ -3005,6 +3123,14 @@ inline const char *espcontrol_i18n_pt_br(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Falha ao agrupar";
   if (std::strcmp(text, "Speakers updated") == 0) return "Alto-falantes atualizados";
   if (std::strcmp(text, "Updating speakers") == 0) return "Atualizando alto-falantes";
+  if (std::strcmp(text, "Settings") == 0) return "Configurações";
+  if (std::strcmp(text, "Brightness") == 0) return "Brilho";
+  if (std::strcmp(text, "Daytime") == 0) return "Dia";
+  if (std::strcmp(text, "Nighttime") == 0) return "Noite";
+  if (std::strcmp(text, "Timer") == 0) return "Temporizador";
+  if (std::strcmp(text, "Confirm") == 0) return "Confirmar";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Wi-Fi de convidados";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "O Wi-Fi não mudou";
   return text;
 }
 
@@ -3050,6 +3176,7 @@ inline const char *espcontrol_i18n_pt(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Direção";
   if (std::strcmp(text, "Disarm") == 0) return "Desarmar";
   if (std::strcmp(text, "Disarmed") == 0) return "Desarmado";
+  if (std::strcmp(text, "Disconnected") == 0) return "Desligado";
   if (std::strcmp(text, "Door") == 0) return "Porta";
   if (std::strcmp(text, "Door Open") == 0) return "Porta aberta";
   if (std::strcmp(text, "Dock") == 0) return "Ancorar";
@@ -3179,6 +3306,7 @@ inline const char *espcontrol_i18n_pt(const char *text) {
   if (std::strcmp(text, "Unsupported") == 0) return "Não suportado";
   if (std::strcmp(text, "Vacuum") == 0) return "Aspirador";
   if (std::strcmp(text, "Version unknown") == 0) return "Versão desconhecida";
+  if (std::strcmp(text, "Voice") == 0) return "Voz";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "À espera do Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "A ligar ao \nHome Assistant";
   if (std::strcmp(text, "Weather") == 0) return "Meteorologia";
@@ -3235,6 +3363,14 @@ inline const char *espcontrol_i18n_pt(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Falha ao agrupar";
   if (std::strcmp(text, "Speakers updated") == 0) return "Colunas atualizadas";
   if (std::strcmp(text, "Updating speakers") == 0) return "A atualizar colunas";
+  if (std::strcmp(text, "Settings") == 0) return "Definições";
+  if (std::strcmp(text, "Brightness") == 0) return "Brilho";
+  if (std::strcmp(text, "Daytime") == 0) return "Dia";
+  if (std::strcmp(text, "Nighttime") == 0) return "Noite";
+  if (std::strcmp(text, "Timer") == 0) return "Temporizador";
+  if (std::strcmp(text, "Confirm") == 0) return "Confirmar";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Wi-Fi de convidados";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "O Wi-Fi não mudou";
   return text;
 }
 
@@ -3282,6 +3418,7 @@ inline const char *espcontrol_i18n_ro(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Direcție";
   if (std::strcmp(text, "Disarm") == 0) return "Dezarmează";
   if (std::strcmp(text, "Disarmed") == 0) return "Dezarmat";
+  if (std::strcmp(text, "Disconnected") == 0) return "Deconectat";
   if (std::strcmp(text, "Door") == 0) return "Ușă";
   if (std::strcmp(text, "Door Open") == 0) return "Ușă deschisă";
   if (std::strcmp(text, "Dock") == 0) return "Andocare";
@@ -3417,6 +3554,7 @@ inline const char *espcontrol_i18n_ro(const char *text) {
   if (std::strcmp(text, "Vacationhold") == 0) return "Menținere vacanță";
   if (std::strcmp(text, "Vacuum") == 0) return "Aspirator";
   if (std::strcmp(text, "Version unknown") == 0) return "Versiune necunoscută";
+  if (std::strcmp(text, "Voice") == 0) return "Voce";
   if (std::strcmp(text, "Volume") == 0) return "Volum";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Se așteaptă Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Se conectează la \nHome Assistant";
@@ -3474,6 +3612,14 @@ inline const char *espcontrol_i18n_ro(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Gruparea a eșuat";
   if (std::strcmp(text, "Speakers updated") == 0) return "Difuzoare actualizate";
   if (std::strcmp(text, "Updating speakers") == 0) return "Se actualizează difuzoarele";
+  if (std::strcmp(text, "Settings") == 0) return "Setări";
+  if (std::strcmp(text, "Brightness") == 0) return "Luminozitate";
+  if (std::strcmp(text, "Daytime") == 0) return "Zi";
+  if (std::strcmp(text, "Nighttime") == 0) return "Noapte";
+  if (std::strcmp(text, "Timer") == 0) return "Temporizator";
+  if (std::strcmp(text, "Confirm") == 0) return "Confirmați";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Wi-Fi pentru oaspeți";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "Starea Wi-Fi nu s-a schimbat";
   return text;
 }
 
@@ -3523,6 +3669,7 @@ inline const char *espcontrol_i18n_ru(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Направление";
   if (std::strcmp(text, "Disarm") == 0) return "Снять с охраны";
   if (std::strcmp(text, "Disarmed") == 0) return "Снято с охраны";
+  if (std::strcmp(text, "Disconnected") == 0) return "Отключено";
   if (std::strcmp(text, "Door") == 0) return "Дверь";
   if (std::strcmp(text, "Door Open") == 0) return "Дверь открыта";
   if (std::strcmp(text, "Dock") == 0) return "На базу";
@@ -3662,6 +3809,7 @@ inline const char *espcontrol_i18n_ru(const char *text) {
   if (std::strcmp(text, "Vacationhold") == 0) return "Удержание на отпуск";
   if (std::strcmp(text, "Vacuum") == 0) return "Пылесос";
   if (std::strcmp(text, "Version unknown") == 0) return "Версия неизвестна";
+  if (std::strcmp(text, "Voice") == 0) return "Голос";
   if (std::strcmp(text, "Volume") == 0) return "Громкость";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Ожидание Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Подключение к \nHome Assistant";
@@ -3720,6 +3868,14 @@ inline const char *espcontrol_i18n_ru(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Не удалось сгруппировать";
   if (std::strcmp(text, "Speakers updated") == 0) return "Динамики обновлены";
   if (std::strcmp(text, "Updating speakers") == 0) return "Обновление динамиков";
+  if (std::strcmp(text, "Settings") == 0) return "Настройки";
+  if (std::strcmp(text, "Brightness") == 0) return "Яркость";
+  if (std::strcmp(text, "Daytime") == 0) return "День";
+  if (std::strcmp(text, "Nighttime") == 0) return "Ночь";
+  if (std::strcmp(text, "Timer") == 0) return "Таймер";
+  if (std::strcmp(text, "Confirm") == 0) return "Подтвердить";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Гостевой Wi-Fi";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "Состояние Wi-Fi не изменилось";
   return text;
 }
 
@@ -3764,6 +3920,7 @@ inline const char *espcontrol_i18n_sk(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Smer";
   if (std::strcmp(text, "Disarm") == 0) return "Odzbrojiť";
   if (std::strcmp(text, "Disarmed") == 0) return "Odzbrojené";
+  if (std::strcmp(text, "Disconnected") == 0) return "Odpojené";
   if (std::strcmp(text, "Door") == 0) return "Dvere";
   if (std::strcmp(text, "Door Open") == 0) return "Dvere otvorené";
   if (std::strcmp(text, "Dock") == 0) return "Dokovať";
@@ -3894,6 +4051,7 @@ inline const char *espcontrol_i18n_sk(const char *text) {
   if (std::strcmp(text, "Unsupported") == 0) return "Nepodporované";
   if (std::strcmp(text, "Vacuum") == 0) return "Vysávač";
   if (std::strcmp(text, "Version unknown") == 0) return "Verzia neznáma";
+  if (std::strcmp(text, "Voice") == 0) return "Hlas";
   if (std::strcmp(text, "Volume") == 0) return "Hlasitosť";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Čakanie na Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Pripája sa k \nHome Assistant";
@@ -3951,6 +4109,14 @@ inline const char *espcontrol_i18n_sk(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Zoskupenie zlyhalo";
   if (std::strcmp(text, "Speakers updated") == 0) return "Reproduktory aktualizované";
   if (std::strcmp(text, "Updating speakers") == 0) return "Aktualizácia reproduktorov";
+  if (std::strcmp(text, "Settings") == 0) return "Nastavenia";
+  if (std::strcmp(text, "Brightness") == 0) return "Jas";
+  if (std::strcmp(text, "Daytime") == 0) return "Deň";
+  if (std::strcmp(text, "Nighttime") == 0) return "Noc";
+  if (std::strcmp(text, "Timer") == 0) return "Časovač";
+  if (std::strcmp(text, "Confirm") == 0) return "Potvrdiť";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Wi-Fi pre hostí";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "Stav Wi-Fi sa nezmenil";
   return text;
 }
 
@@ -3997,6 +4163,7 @@ inline const char *espcontrol_i18n_sl(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Smer";
   if (std::strcmp(text, "Disarm") == 0) return "Izklopi varovanje";
   if (std::strcmp(text, "Disarmed") == 0) return "Varovanje izklopljeno";
+  if (std::strcmp(text, "Disconnected") == 0) return "Prekinjeno";
   if (std::strcmp(text, "Door") == 0) return "Vrata";
   if (std::strcmp(text, "Door Open") == 0) return "Vrata odprta";
   if (std::strcmp(text, "Dock") == 0) return "Priklop";
@@ -4129,6 +4296,7 @@ inline const char *espcontrol_i18n_sl(const char *text) {
   if (std::strcmp(text, "Vacationhold") == 0) return "Počitniško zadržanje";
   if (std::strcmp(text, "Vacuum") == 0) return "Sesalnik";
   if (std::strcmp(text, "Version unknown") == 0) return "Različica neznana";
+  if (std::strcmp(text, "Voice") == 0) return "Glas";
   if (std::strcmp(text, "Volume") == 0) return "Glasnost";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Čakanje na Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Povezovanje s \nHome Assistant";
@@ -4186,6 +4354,14 @@ inline const char *espcontrol_i18n_sl(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Združevanje ni uspelo";
   if (std::strcmp(text, "Speakers updated") == 0) return "Zvočniki posodobljeni";
   if (std::strcmp(text, "Updating speakers") == 0) return "Posodabljanje zvočnikov";
+  if (std::strcmp(text, "Settings") == 0) return "Nastavitve";
+  if (std::strcmp(text, "Brightness") == 0) return "Svetlost";
+  if (std::strcmp(text, "Daytime") == 0) return "Dan";
+  if (std::strcmp(text, "Nighttime") == 0) return "Noč";
+  if (std::strcmp(text, "Timer") == 0) return "Časovnik";
+  if (std::strcmp(text, "Confirm") == 0) return "Potrdi";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Wi-Fi za goste";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "Stanje Wi-Fi se ni spremenilo";
   return text;
 }
 
@@ -4231,6 +4407,7 @@ inline const char *espcontrol_i18n_sv(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Riktning";
   if (std::strcmp(text, "Disarm") == 0) return "Avlarma";
   if (std::strcmp(text, "Disarmed") == 0) return "Avlarmat";
+  if (std::strcmp(text, "Disconnected") == 0) return "Frånkopplad";
   if (std::strcmp(text, "Door") == 0) return "Dörr";
   if (std::strcmp(text, "Door Open") == 0) return "Dörr öppen";
   if (std::strcmp(text, "Dock") == 0) return "Docka";
@@ -4356,6 +4533,7 @@ inline const char *espcontrol_i18n_sv(const char *text) {
   if (std::strcmp(text, "Unsupported") == 0) return "Stöds inte";
   if (std::strcmp(text, "Vacuum") == 0) return "Dammsugare";
   if (std::strcmp(text, "Version unknown") == 0) return "Version okänd";
+  if (std::strcmp(text, "Voice") == 0) return "Röst";
   if (std::strcmp(text, "Volume") == 0) return "Volym";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Väntar på Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Ansluter till \nHome Assistant";
@@ -4413,6 +4591,13 @@ inline const char *espcontrol_i18n_sv(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Gruppering misslyckades";
   if (std::strcmp(text, "Speakers updated") == 0) return "Högtalare uppdaterade";
   if (std::strcmp(text, "Updating speakers") == 0) return "Uppdaterar högtalare";
+  if (std::strcmp(text, "Settings") == 0) return "Inställningar";
+  if (std::strcmp(text, "Brightness") == 0) return "Ljusstyrka";
+  if (std::strcmp(text, "Daytime") == 0) return "Dagtid";
+  if (std::strcmp(text, "Nighttime") == 0) return "Nattetid";
+  if (std::strcmp(text, "Confirm") == 0) return "Bekräfta";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Gäst-Wi-Fi";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "Wi-Fi ändrades inte";
   return text;
 }
 
@@ -4459,6 +4644,7 @@ inline const char *espcontrol_i18n_tr(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Yön";
   if (std::strcmp(text, "Disarm") == 0) return "Devre dışı bırak";
   if (std::strcmp(text, "Disarmed") == 0) return "Devre dışı";
+  if (std::strcmp(text, "Disconnected") == 0) return "Bağlantısı kesildi";
   if (std::strcmp(text, "Door") == 0) return "Kapı";
   if (std::strcmp(text, "Door Open") == 0) return "Kapı açık";
   if (std::strcmp(text, "Dock") == 0) return "Yuvaya dön";
@@ -4595,6 +4781,7 @@ inline const char *espcontrol_i18n_tr(const char *text) {
   if (std::strcmp(text, "Vacationhold") == 0) return "Tatil tutması";
   if (std::strcmp(text, "Vacuum") == 0) return "Süpürge";
   if (std::strcmp(text, "Version unknown") == 0) return "Sürüm bilinmiyor";
+  if (std::strcmp(text, "Voice") == 0) return "Ses";
   if (std::strcmp(text, "Volume") == 0) return "Ses";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Home Assistant bekleniyor";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "\nHome Assistant'a bağlanılıyor";
@@ -4652,6 +4839,14 @@ inline const char *espcontrol_i18n_tr(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Gruplama başarısız";
   if (std::strcmp(text, "Speakers updated") == 0) return "Hoparlörler güncellendi";
   if (std::strcmp(text, "Updating speakers") == 0) return "Hoparlörler güncelleniyor";
+  if (std::strcmp(text, "Settings") == 0) return "Ayarlar";
+  if (std::strcmp(text, "Brightness") == 0) return "Parlaklık";
+  if (std::strcmp(text, "Daytime") == 0) return "Gündüz";
+  if (std::strcmp(text, "Nighttime") == 0) return "Gece";
+  if (std::strcmp(text, "Timer") == 0) return "Zamanlayıcı";
+  if (std::strcmp(text, "Confirm") == 0) return "Onayla";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Misafir Wi-Fi";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "Wi-Fi durumu değişmedi";
   return text;
 }
 
@@ -4699,6 +4894,7 @@ inline const char *espcontrol_i18n_uk(const char *text) {
   if (std::strcmp(text, "Direction") == 0) return "Напрямок";
   if (std::strcmp(text, "Disarm") == 0) return "Вимкнути охорону";
   if (std::strcmp(text, "Disarmed") == 0) return "Охорону вимкнено";
+  if (std::strcmp(text, "Disconnected") == 0) return "Від’єднано";
   if (std::strcmp(text, "Door") == 0) return "Двері";
   if (std::strcmp(text, "Door Open") == 0) return "Двері відчинені";
   if (std::strcmp(text, "Dock") == 0) return "До бази";
@@ -4836,6 +5032,7 @@ inline const char *espcontrol_i18n_uk(const char *text) {
   if (std::strcmp(text, "Vacationhold") == 0) return "Утримання на відпустку";
   if (std::strcmp(text, "Vacuum") == 0) return "Пилосос";
   if (std::strcmp(text, "Version unknown") == 0) return "Версія невідома";
+  if (std::strcmp(text, "Voice") == 0) return "Голос";
   if (std::strcmp(text, "Volume") == 0) return "Гучність";
   if (std::strcmp(text, "Waiting for Home Assistant") == 0) return "Очікування Home Assistant";
   if (std::strcmp(text, "Connecting to \nHome Assistant") == 0) return "Підключення до \nHome Assistant";
@@ -4893,6 +5090,14 @@ inline const char *espcontrol_i18n_uk(const char *text) {
   if (std::strcmp(text, "Grouping failed") == 0) return "Не вдалося згрупувати";
   if (std::strcmp(text, "Speakers updated") == 0) return "Динаміки оновлено";
   if (std::strcmp(text, "Updating speakers") == 0) return "Оновлення динаміків";
+  if (std::strcmp(text, "Settings") == 0) return "Налаштування";
+  if (std::strcmp(text, "Brightness") == 0) return "Яскравість";
+  if (std::strcmp(text, "Daytime") == 0) return "День";
+  if (std::strcmp(text, "Nighttime") == 0) return "Ніч";
+  if (std::strcmp(text, "Timer") == 0) return "Таймер";
+  if (std::strcmp(text, "Confirm") == 0) return "Підтвердити";
+  if (std::strcmp(text, "Guest Wi-Fi") == 0) return "Гостьовий Wi-Fi";
+  if (std::strcmp(text, "Wi-Fi did not change") == 0) return "Стан Wi-Fi не змінився";
   return text;
 }
 
@@ -4943,6 +5148,7 @@ inline const char *espcontrol_i18n_key_en(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Direction";
   if (std::strcmp(key, "disarm") == 0) return "Disarm";
   if (std::strcmp(key, "disarmed") == 0) return "Disarmed";
+  if (std::strcmp(key, "disconnected") == 0) return "Disconnected";
   if (std::strcmp(key, "door") == 0) return "Door";
   if (std::strcmp(key, "door_open") == 0) return "Door Open";
   if (std::strcmp(key, "dock") == 0) return "Dock";
@@ -5055,6 +5261,7 @@ inline const char *espcontrol_i18n_key_en(const char *key) {
   if (std::strcmp(key, "snowy_and_rain") == 0) return "Snowy And Rain";
   if (std::strcmp(key, "spot_clean") == 0) return "Spot Clean";
   if (std::strcmp(key, "start") == 0) return "Start";
+  if (std::strcmp(key, "start_dock") == 0) return "Start / Dock";
   if (std::strcmp(key, "still") == 0) return "Still";
   if (std::strcmp(key, "subpage") == 0) return "Subpage";
   if (std::strcmp(key, "stop") == 0) return "Stop";
@@ -5083,6 +5290,7 @@ inline const char *espcontrol_i18n_key_en(const char *key) {
   if (std::strcmp(key, "vacationhold") == 0) return "Vacationhold";
   if (std::strcmp(key, "vacuum") == 0) return "Vacuum";
   if (std::strcmp(key, "version_unknown") == 0) return "Version unknown";
+  if (std::strcmp(key, "voice") == 0) return "Voice";
   if (std::strcmp(key, "volume") == 0) return "Volume";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Waiting for Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Connecting to \nHome Assistant";
@@ -5142,6 +5350,14 @@ inline const char *espcontrol_i18n_key_en(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Grouping failed";
   if (std::strcmp(key, "speakers_updated") == 0) return "Speakers updated";
   if (std::strcmp(key, "updating_speakers") == 0) return "Updating speakers";
+  if (std::strcmp(key, "settings") == 0) return "Settings";
+  if (std::strcmp(key, "brightness") == 0) return "Brightness";
+  if (std::strcmp(key, "daytime") == 0) return "Daytime";
+  if (std::strcmp(key, "nighttime") == 0) return "Nighttime";
+  if (std::strcmp(key, "timer") == 0) return "Timer";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Confirm";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Guest Wi-Fi";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "Wi-Fi did not change";
   return key;
 }
 
@@ -5186,6 +5402,7 @@ inline const char *espcontrol_i18n_key_cs(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Směr";
   if (std::strcmp(key, "disarm") == 0) return "Odzajistit";
   if (std::strcmp(key, "disarmed") == 0) return "Odzajištěno";
+  if (std::strcmp(key, "disconnected") == 0) return "Odpojeno";
   if (std::strcmp(key, "door") == 0) return "Dveře";
   if (std::strcmp(key, "door_open") == 0) return "Dveře otevřeny";
   if (std::strcmp(key, "dock") == 0) return "Dokovat";
@@ -5316,6 +5533,7 @@ inline const char *espcontrol_i18n_key_cs(const char *key) {
   if (std::strcmp(key, "unsupported") == 0) return "Nepodporováno";
   if (std::strcmp(key, "vacuum") == 0) return "Vysavač";
   if (std::strcmp(key, "version_unknown") == 0) return "Verze neznámá";
+  if (std::strcmp(key, "voice") == 0) return "Hlas";
   if (std::strcmp(key, "volume") == 0) return "Hlasitost";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Čekání na Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Připojování k \nHome Assistant";
@@ -5373,6 +5591,14 @@ inline const char *espcontrol_i18n_key_cs(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Seskupení se nezdařilo";
   if (std::strcmp(key, "speakers_updated") == 0) return "Reproduktory aktualizovány";
   if (std::strcmp(key, "updating_speakers") == 0) return "Aktualizace reproduktorů";
+  if (std::strcmp(key, "settings") == 0) return "Nastavení";
+  if (std::strcmp(key, "brightness") == 0) return "Jas";
+  if (std::strcmp(key, "daytime") == 0) return "Den";
+  if (std::strcmp(key, "nighttime") == 0) return "Noc";
+  if (std::strcmp(key, "timer") == 0) return "Časovač";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Potvrdit";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Wi-Fi pro hosty";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "Stav Wi-Fi se nezměnil";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -5417,6 +5643,7 @@ inline const char *espcontrol_i18n_key_da(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Retning";
   if (std::strcmp(key, "disarm") == 0) return "Deaktiver";
   if (std::strcmp(key, "disarmed") == 0) return "Deaktiveret";
+  if (std::strcmp(key, "disconnected") == 0) return "Afbrudt";
   if (std::strcmp(key, "door") == 0) return "Dør";
   if (std::strcmp(key, "door_open") == 0) return "Dør åben";
   if (std::strcmp(key, "docked") == 0) return "Docket";
@@ -5541,6 +5768,7 @@ inline const char *espcontrol_i18n_key_da(const char *key) {
   if (std::strcmp(key, "unsupported") == 0) return "Ikke understøttet";
   if (std::strcmp(key, "vacuum") == 0) return "Støvsuger";
   if (std::strcmp(key, "version_unknown") == 0) return "Version ukendt";
+  if (std::strcmp(key, "voice") == 0) return "Stemme";
   if (std::strcmp(key, "volume") == 0) return "Lydstyrke";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Venter på Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Opretter forbindelse til \nHome Assistant";
@@ -5598,6 +5826,13 @@ inline const char *espcontrol_i18n_key_da(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Gruppering mislykkedes";
   if (std::strcmp(key, "speakers_updated") == 0) return "Højttalere opdateret";
   if (std::strcmp(key, "updating_speakers") == 0) return "Opdaterer højttalere";
+  if (std::strcmp(key, "settings") == 0) return "Indstillinger";
+  if (std::strcmp(key, "brightness") == 0) return "Lysstyrke";
+  if (std::strcmp(key, "daytime") == 0) return "Dagtid";
+  if (std::strcmp(key, "nighttime") == 0) return "Nattetid";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Bekræft";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Gæste-Wi-Fi";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "Wi-Fi blev ikke ændret";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -5643,6 +5878,7 @@ inline const char *espcontrol_i18n_key_de(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Richtung";
   if (std::strcmp(key, "disarm") == 0) return "Entschärfen";
   if (std::strcmp(key, "disarmed") == 0) return "Entschärft";
+  if (std::strcmp(key, "disconnected") == 0) return "Getrennt";
   if (std::strcmp(key, "door") == 0) return "Tür";
   if (std::strcmp(key, "door_open") == 0) return "Tür offen";
   if (std::strcmp(key, "dock") == 0) return "Andocken";
@@ -5764,6 +6000,7 @@ inline const char *espcontrol_i18n_key_de(const char *key) {
   if (std::strcmp(key, "unsupported") == 0) return "Nicht unterstützt";
   if (std::strcmp(key, "vacuum") == 0) return "Staubsauger";
   if (std::strcmp(key, "version_unknown") == 0) return "Version unbekannt";
+  if (std::strcmp(key, "voice") == 0) return "Sprache";
   if (std::strcmp(key, "volume") == 0) return "Lautstärke";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Warten auf Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Verbindung mit \nHome Assistant wird hergestellt";
@@ -5821,6 +6058,13 @@ inline const char *espcontrol_i18n_key_de(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Gruppierung fehlgeschlagen";
   if (std::strcmp(key, "speakers_updated") == 0) return "Lautsprecher aktualisiert";
   if (std::strcmp(key, "updating_speakers") == 0) return "Lautsprecher werden aktualisiert";
+  if (std::strcmp(key, "settings") == 0) return "Einstellungen";
+  if (std::strcmp(key, "brightness") == 0) return "Helligkeit";
+  if (std::strcmp(key, "daytime") == 0) return "Tagsüber";
+  if (std::strcmp(key, "nighttime") == 0) return "Nachts";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Bestätigen";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Gast-WLAN";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "WLAN wurde nicht geändert";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -5866,6 +6110,7 @@ inline const char *espcontrol_i18n_key_es(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Dirección";
   if (std::strcmp(key, "disarm") == 0) return "Desarmar";
   if (std::strcmp(key, "disarmed") == 0) return "Desarmada";
+  if (std::strcmp(key, "disconnected") == 0) return "Desconectado";
   if (std::strcmp(key, "door") == 0) return "Puerta";
   if (std::strcmp(key, "door_open") == 0) return "Puerta abierta";
   if (std::strcmp(key, "dock") == 0) return "Acoplar";
@@ -5994,6 +6239,7 @@ inline const char *espcontrol_i18n_key_es(const char *key) {
   if (std::strcmp(key, "unsupported") == 0) return "No compatible";
   if (std::strcmp(key, "vacuum") == 0) return "Aspiradora";
   if (std::strcmp(key, "version_unknown") == 0) return "Versión desconocida";
+  if (std::strcmp(key, "voice") == 0) return "Voz";
   if (std::strcmp(key, "volume") == 0) return "Volumen";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Esperando a Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Conectando a \nHome Assistant";
@@ -6051,6 +6297,14 @@ inline const char *espcontrol_i18n_key_es(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Error al agrupar";
   if (std::strcmp(key, "speakers_updated") == 0) return "Altavoces actualizados";
   if (std::strcmp(key, "updating_speakers") == 0) return "Actualizando altavoces";
+  if (std::strcmp(key, "settings") == 0) return "Ajustes";
+  if (std::strcmp(key, "brightness") == 0) return "Brillo";
+  if (std::strcmp(key, "daytime") == 0) return "Día";
+  if (std::strcmp(key, "nighttime") == 0) return "Noche";
+  if (std::strcmp(key, "timer") == 0) return "Temporizador";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Confirmar";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Wi-Fi de invitados";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "El Wi-Fi no ha cambiado";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -6098,6 +6352,7 @@ inline const char *espcontrol_i18n_key_fi(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Suunta";
   if (std::strcmp(key, "disarm") == 0) return "Poista viritys";
   if (std::strcmp(key, "disarmed") == 0) return "Poistettu käytöstä";
+  if (std::strcmp(key, "disconnected") == 0) return "Yhteys katkaistu";
   if (std::strcmp(key, "door") == 0) return "Ovi";
   if (std::strcmp(key, "door_open") == 0) return "Ovi auki";
   if (std::strcmp(key, "dock") == 0) return "Telakoi";
@@ -6234,6 +6489,7 @@ inline const char *espcontrol_i18n_key_fi(const char *key) {
   if (std::strcmp(key, "vacationhold") == 0) return "Lomapito";
   if (std::strcmp(key, "vacuum") == 0) return "Imuri";
   if (std::strcmp(key, "version_unknown") == 0) return "Versio tuntematon";
+  if (std::strcmp(key, "voice") == 0) return "Puhe";
   if (std::strcmp(key, "volume") == 0) return "Äänenvoimakkuus";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Odotetaan Home Assistantia";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Yhdistetään \nHome Assistantiin";
@@ -6291,6 +6547,14 @@ inline const char *espcontrol_i18n_key_fi(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Ryhmittely epäonnistui";
   if (std::strcmp(key, "speakers_updated") == 0) return "Kaiuttimet päivitetty";
   if (std::strcmp(key, "updating_speakers") == 0) return "Päivitetään kaiuttimia";
+  if (std::strcmp(key, "settings") == 0) return "Asetukset";
+  if (std::strcmp(key, "brightness") == 0) return "Kirkkaus";
+  if (std::strcmp(key, "daytime") == 0) return "Päivä";
+  if (std::strcmp(key, "nighttime") == 0) return "Yö";
+  if (std::strcmp(key, "timer") == 0) return "Ajastin";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Vahvista";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Vieras-Wi-Fi";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "Wi-Fi ei muuttunut";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -6333,6 +6597,7 @@ inline const char *espcontrol_i18n_key_fr(const char *key) {
   if (std::strcmp(key, "dimmed") == 0) return "Tamisé";
   if (std::strcmp(key, "disarm") == 0) return "Désarmer";
   if (std::strcmp(key, "disarmed") == 0) return "Désarmé";
+  if (std::strcmp(key, "disconnected") == 0) return "Déconnecté";
   if (std::strcmp(key, "door") == 0) return "Porte";
   if (std::strcmp(key, "door_open") == 0) return "Porte ouverte";
   if (std::strcmp(key, "dock") == 0) return "Station";
@@ -6458,6 +6723,7 @@ inline const char *espcontrol_i18n_key_fr(const char *key) {
   if (std::strcmp(key, "unsupported") == 0) return "Non pris en charge";
   if (std::strcmp(key, "vacuum") == 0) return "Aspirateur";
   if (std::strcmp(key, "version_unknown") == 0) return "Version inconnue";
+  if (std::strcmp(key, "voice") == 0) return "Voix";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "En attente de Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Connexion à \nHome Assistant";
   if (std::strcmp(key, "weather") == 0) return "Météo";
@@ -6514,6 +6780,14 @@ inline const char *espcontrol_i18n_key_fr(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Échec du regroupement";
   if (std::strcmp(key, "speakers_updated") == 0) return "Enceintes mises à jour";
   if (std::strcmp(key, "updating_speakers") == 0) return "Mise à jour des enceintes";
+  if (std::strcmp(key, "settings") == 0) return "Paramètres";
+  if (std::strcmp(key, "brightness") == 0) return "Luminosité";
+  if (std::strcmp(key, "daytime") == 0) return "Jour";
+  if (std::strcmp(key, "nighttime") == 0) return "Nuit";
+  if (std::strcmp(key, "timer") == 0) return "Minuteur";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Confirmer";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Wi-Fi invité";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "Le Wi-Fi n’a pas changé";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -6564,6 +6838,7 @@ inline const char *espcontrol_i18n_key_he(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "כיוון";
   if (std::strcmp(key, "disarm") == 0) return "נטרול";
   if (std::strcmp(key, "disarmed") == 0) return "מנוטרל";
+  if (std::strcmp(key, "disconnected") == 0) return "מנותק";
   if (std::strcmp(key, "door") == 0) return "דלת";
   if (std::strcmp(key, "door_open") == 0) return "דלת פתוחה";
   if (std::strcmp(key, "dock") == 0) return "עגינה";
@@ -6704,6 +6979,7 @@ inline const char *espcontrol_i18n_key_he(const char *key) {
   if (std::strcmp(key, "vacationhold") == 0) return "החזקת חופשה";
   if (std::strcmp(key, "vacuum") == 0) return "שואב אבק";
   if (std::strcmp(key, "version_unknown") == 0) return "גרסה לא ידועה";
+  if (std::strcmp(key, "voice") == 0) return "קול";
   if (std::strcmp(key, "volume") == 0) return "עוצמה";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "ממתין ל-Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "מתחבר אל\nHome Assistant";
@@ -6762,6 +7038,14 @@ inline const char *espcontrol_i18n_key_he(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "הקיבוץ נכשל";
   if (std::strcmp(key, "speakers_updated") == 0) return "הרמקולים עודכנו";
   if (std::strcmp(key, "updating_speakers") == 0) return "מעדכן רמקולים";
+  if (std::strcmp(key, "settings") == 0) return "הגדרות";
+  if (std::strcmp(key, "brightness") == 0) return "בהירות";
+  if (std::strcmp(key, "daytime") == 0) return "יום";
+  if (std::strcmp(key, "nighttime") == 0) return "לילה";
+  if (std::strcmp(key, "timer") == 0) return "טיימר";
+  if (std::strcmp(key, "timer_confirm") == 0) return "לאשר";
+  if (std::strcmp(key, "guest_wifi") == 0) return "רשת Wi-Fi לאורחים";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "מצב ה-Wi-Fi לא השתנה";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -6809,6 +7093,7 @@ inline const char *espcontrol_i18n_key_hu(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Irány";
   if (std::strcmp(key, "disarm") == 0) return "Hatástalanítás";
   if (std::strcmp(key, "disarmed") == 0) return "Hatástalanítva";
+  if (std::strcmp(key, "disconnected") == 0) return "Lekapcsolva";
   if (std::strcmp(key, "door") == 0) return "Ajtó";
   if (std::strcmp(key, "door_open") == 0) return "Ajtó nyitva";
   if (std::strcmp(key, "dock") == 0) return "Dokkolás";
@@ -6945,6 +7230,7 @@ inline const char *espcontrol_i18n_key_hu(const char *key) {
   if (std::strcmp(key, "vacationhold") == 0) return "Vakációs tartás";
   if (std::strcmp(key, "vacuum") == 0) return "Porszívó";
   if (std::strcmp(key, "version_unknown") == 0) return "Ismeretlen verzió";
+  if (std::strcmp(key, "voice") == 0) return "Hang";
   if (std::strcmp(key, "volume") == 0) return "Hangerő";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Várakozás a Home Assistantra";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Csatlakozás a \nHome Assistanthez";
@@ -7002,6 +7288,14 @@ inline const char *espcontrol_i18n_key_hu(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "A csoportosítás sikertelen";
   if (std::strcmp(key, "speakers_updated") == 0) return "Hangszórók frissítve";
   if (std::strcmp(key, "updating_speakers") == 0) return "Hangszórók frissítése";
+  if (std::strcmp(key, "settings") == 0) return "Beállítások";
+  if (std::strcmp(key, "brightness") == 0) return "Fényerő";
+  if (std::strcmp(key, "daytime") == 0) return "Nappal";
+  if (std::strcmp(key, "nighttime") == 0) return "Éjszaka";
+  if (std::strcmp(key, "timer") == 0) return "Időzítő";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Megerősítés";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Vendég Wi-Fi";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "A Wi-Fi állapota nem változott";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -7047,6 +7341,7 @@ inline const char *espcontrol_i18n_key_it(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Direzione";
   if (std::strcmp(key, "disarm") == 0) return "Disinserisci";
   if (std::strcmp(key, "disarmed") == 0) return "Disinserito";
+  if (std::strcmp(key, "disconnected") == 0) return "Disconnesso";
   if (std::strcmp(key, "door") == 0) return "Porta";
   if (std::strcmp(key, "door_open") == 0) return "Porta aperta";
   if (std::strcmp(key, "docked") == 0) return "In base";
@@ -7178,6 +7473,7 @@ inline const char *espcontrol_i18n_key_it(const char *key) {
   if (std::strcmp(key, "vacationhold") == 0) return "Vacanza";
   if (std::strcmp(key, "vacuum") == 0) return "Aspirapolvere";
   if (std::strcmp(key, "version_unknown") == 0) return "Versione sconosciuta";
+  if (std::strcmp(key, "voice") == 0) return "Voce";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "In attesa di Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Connessione a \nHome Assistant";
   if (std::strcmp(key, "weather") == 0) return "Meteo";
@@ -7233,6 +7529,13 @@ inline const char *espcontrol_i18n_key_it(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Raggruppamento non riuscito";
   if (std::strcmp(key, "speakers_updated") == 0) return "Altoparlanti aggiornati";
   if (std::strcmp(key, "updating_speakers") == 0) return "Aggiornamento altoparlanti";
+  if (std::strcmp(key, "settings") == 0) return "Impostazioni";
+  if (std::strcmp(key, "brightness") == 0) return "Luminosità";
+  if (std::strcmp(key, "daytime") == 0) return "Giorno";
+  if (std::strcmp(key, "nighttime") == 0) return "Notte";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Confermare";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Wi-Fi ospiti";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "Il Wi-Fi non è cambiato";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -7277,6 +7580,7 @@ inline const char *espcontrol_i18n_key_nb(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Retning";
   if (std::strcmp(key, "disarm") == 0) return "Deaktiver";
   if (std::strcmp(key, "disarmed") == 0) return "Deaktivert";
+  if (std::strcmp(key, "disconnected") == 0) return "Frakoblet";
   if (std::strcmp(key, "door") == 0) return "Dør";
   if (std::strcmp(key, "door_open") == 0) return "Dør åpen";
   if (std::strcmp(key, "dock") == 0) return "Dokking";
@@ -7404,6 +7708,7 @@ inline const char *espcontrol_i18n_key_nb(const char *key) {
   if (std::strcmp(key, "unsupported") == 0) return "Støttes ikke";
   if (std::strcmp(key, "vacuum") == 0) return "Støvsuger";
   if (std::strcmp(key, "version_unknown") == 0) return "Ukjent versjon";
+  if (std::strcmp(key, "voice") == 0) return "Stemme";
   if (std::strcmp(key, "volume") == 0) return "Volum";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Venter på Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Kobler til \nHome Assistant";
@@ -7461,6 +7766,14 @@ inline const char *espcontrol_i18n_key_nb(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Gruppering mislyktes";
   if (std::strcmp(key, "speakers_updated") == 0) return "Høyttalere oppdatert";
   if (std::strcmp(key, "updating_speakers") == 0) return "Oppdaterer høyttalere";
+  if (std::strcmp(key, "settings") == 0) return "Innstillinger";
+  if (std::strcmp(key, "brightness") == 0) return "Lysstyrke";
+  if (std::strcmp(key, "daytime") == 0) return "Dagtid";
+  if (std::strcmp(key, "nighttime") == 0) return "Nattetid";
+  if (std::strcmp(key, "timer") == 0) return "Tidtaker";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Bekreft";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Gjeste-Wi-Fi";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "Wi-Fi ble ikke endret";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -7507,6 +7820,7 @@ inline const char *espcontrol_i18n_key_nl(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Richting";
   if (std::strcmp(key, "disarm") == 0) return "Uitschakelen";
   if (std::strcmp(key, "disarmed") == 0) return "Uitgeschakeld";
+  if (std::strcmp(key, "disconnected") == 0) return "Verbroken";
   if (std::strcmp(key, "door") == 0) return "Deur";
   if (std::strcmp(key, "door_open") == 0) return "Deur open";
   if (std::strcmp(key, "dock") == 0) return "Docken";
@@ -7634,6 +7948,7 @@ inline const char *espcontrol_i18n_key_nl(const char *key) {
   if (std::strcmp(key, "unsupported") == 0) return "Niet ondersteund";
   if (std::strcmp(key, "vacuum") == 0) return "Stofzuiger";
   if (std::strcmp(key, "version_unknown") == 0) return "Versie onbekend";
+  if (std::strcmp(key, "voice") == 0) return "Spraak";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Wachten op Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Verbinden met \nHome Assistant";
   if (std::strcmp(key, "weather") == 0) return "Weer";
@@ -7689,6 +8004,13 @@ inline const char *espcontrol_i18n_key_nl(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Groeperen mislukt";
   if (std::strcmp(key, "speakers_updated") == 0) return "Luidsprekers bijgewerkt";
   if (std::strcmp(key, "updating_speakers") == 0) return "Luidsprekers bijwerken";
+  if (std::strcmp(key, "settings") == 0) return "Instellingen";
+  if (std::strcmp(key, "brightness") == 0) return "Helderheid";
+  if (std::strcmp(key, "daytime") == 0) return "Overdag";
+  if (std::strcmp(key, "nighttime") == 0) return "Nacht";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Bevestigen";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Gastwifi";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "Wifi is niet gewijzigd";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -7733,6 +8055,7 @@ inline const char *espcontrol_i18n_key_pl(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Kierunek";
   if (std::strcmp(key, "disarm") == 0) return "Rozbrój";
   if (std::strcmp(key, "disarmed") == 0) return "Rozbrojony";
+  if (std::strcmp(key, "disconnected") == 0) return "Rozłączone";
   if (std::strcmp(key, "door") == 0) return "Drzwi";
   if (std::strcmp(key, "door_open") == 0) return "Drzwi otwarte";
   if (std::strcmp(key, "dock") == 0) return "Dokuj";
@@ -7860,6 +8183,7 @@ inline const char *espcontrol_i18n_key_pl(const char *key) {
   if (std::strcmp(key, "unsupported") == 0) return "Nieobsługiwane";
   if (std::strcmp(key, "vacuum") == 0) return "Odkurzacz";
   if (std::strcmp(key, "version_unknown") == 0) return "Wersja nieznana";
+  if (std::strcmp(key, "voice") == 0) return "Głos";
   if (std::strcmp(key, "volume") == 0) return "Głośność";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Oczekiwanie na Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Łączenie z \nHome Assistant";
@@ -7917,6 +8241,14 @@ inline const char *espcontrol_i18n_key_pl(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Grupowanie nie powiodło się";
   if (std::strcmp(key, "speakers_updated") == 0) return "Głośniki zaktualizowane";
   if (std::strcmp(key, "updating_speakers") == 0) return "Aktualizowanie głośników";
+  if (std::strcmp(key, "settings") == 0) return "Ustawienia";
+  if (std::strcmp(key, "brightness") == 0) return "Jasność";
+  if (std::strcmp(key, "daytime") == 0) return "Dzień";
+  if (std::strcmp(key, "nighttime") == 0) return "Noc";
+  if (std::strcmp(key, "timer") == 0) return "Minutnik";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Potwierdzić";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Wi-Fi dla gości";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "Stan Wi-Fi nie zmienił się";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -7962,6 +8294,7 @@ inline const char *espcontrol_i18n_key_pt_br(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Direção";
   if (std::strcmp(key, "disarm") == 0) return "Desarmar";
   if (std::strcmp(key, "disarmed") == 0) return "Desarmado";
+  if (std::strcmp(key, "disconnected") == 0) return "Desconectado";
   if (std::strcmp(key, "door") == 0) return "Porta";
   if (std::strcmp(key, "door_open") == 0) return "Porta aberta";
   if (std::strcmp(key, "docked") == 0) return "Na base";
@@ -8091,6 +8424,7 @@ inline const char *espcontrol_i18n_key_pt_br(const char *key) {
   if (std::strcmp(key, "unsupported") == 0) return "Não suportado";
   if (std::strcmp(key, "vacuum") == 0) return "Aspirador";
   if (std::strcmp(key, "version_unknown") == 0) return "Versão desconhecida";
+  if (std::strcmp(key, "voice") == 0) return "Voz";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Aguardando o Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Conectando ao \nHome Assistant";
   if (std::strcmp(key, "weather") == 0) return "Tempo";
@@ -8147,6 +8481,14 @@ inline const char *espcontrol_i18n_key_pt_br(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Falha ao agrupar";
   if (std::strcmp(key, "speakers_updated") == 0) return "Alto-falantes atualizados";
   if (std::strcmp(key, "updating_speakers") == 0) return "Atualizando alto-falantes";
+  if (std::strcmp(key, "settings") == 0) return "Configurações";
+  if (std::strcmp(key, "brightness") == 0) return "Brilho";
+  if (std::strcmp(key, "daytime") == 0) return "Dia";
+  if (std::strcmp(key, "nighttime") == 0) return "Noite";
+  if (std::strcmp(key, "timer") == 0) return "Temporizador";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Confirmar";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Wi-Fi de convidados";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "O Wi-Fi não mudou";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -8192,6 +8534,7 @@ inline const char *espcontrol_i18n_key_pt(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Direção";
   if (std::strcmp(key, "disarm") == 0) return "Desarmar";
   if (std::strcmp(key, "disarmed") == 0) return "Desarmado";
+  if (std::strcmp(key, "disconnected") == 0) return "Desligado";
   if (std::strcmp(key, "door") == 0) return "Porta";
   if (std::strcmp(key, "door_open") == 0) return "Porta aberta";
   if (std::strcmp(key, "dock") == 0) return "Ancorar";
@@ -8322,6 +8665,7 @@ inline const char *espcontrol_i18n_key_pt(const char *key) {
   if (std::strcmp(key, "unsupported") == 0) return "Não suportado";
   if (std::strcmp(key, "vacuum") == 0) return "Aspirador";
   if (std::strcmp(key, "version_unknown") == 0) return "Versão desconhecida";
+  if (std::strcmp(key, "voice") == 0) return "Voz";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "À espera do Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "A ligar ao \nHome Assistant";
   if (std::strcmp(key, "weather") == 0) return "Meteorologia";
@@ -8378,6 +8722,14 @@ inline const char *espcontrol_i18n_key_pt(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Falha ao agrupar";
   if (std::strcmp(key, "speakers_updated") == 0) return "Colunas atualizadas";
   if (std::strcmp(key, "updating_speakers") == 0) return "A atualizar colunas";
+  if (std::strcmp(key, "settings") == 0) return "Definições";
+  if (std::strcmp(key, "brightness") == 0) return "Brilho";
+  if (std::strcmp(key, "daytime") == 0) return "Dia";
+  if (std::strcmp(key, "nighttime") == 0) return "Noite";
+  if (std::strcmp(key, "timer") == 0) return "Temporizador";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Confirmar";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Wi-Fi de convidados";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "O Wi-Fi não mudou";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -8425,6 +8777,7 @@ inline const char *espcontrol_i18n_key_ro(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Direcție";
   if (std::strcmp(key, "disarm") == 0) return "Dezarmează";
   if (std::strcmp(key, "disarmed") == 0) return "Dezarmat";
+  if (std::strcmp(key, "disconnected") == 0) return "Deconectat";
   if (std::strcmp(key, "door") == 0) return "Ușă";
   if (std::strcmp(key, "door_open") == 0) return "Ușă deschisă";
   if (std::strcmp(key, "dock") == 0) return "Andocare";
@@ -8561,6 +8914,7 @@ inline const char *espcontrol_i18n_key_ro(const char *key) {
   if (std::strcmp(key, "vacationhold") == 0) return "Menținere vacanță";
   if (std::strcmp(key, "vacuum") == 0) return "Aspirator";
   if (std::strcmp(key, "version_unknown") == 0) return "Versiune necunoscută";
+  if (std::strcmp(key, "voice") == 0) return "Voce";
   if (std::strcmp(key, "volume") == 0) return "Volum";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Se așteaptă Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Se conectează la \nHome Assistant";
@@ -8618,6 +8972,14 @@ inline const char *espcontrol_i18n_key_ro(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Gruparea a eșuat";
   if (std::strcmp(key, "speakers_updated") == 0) return "Difuzoare actualizate";
   if (std::strcmp(key, "updating_speakers") == 0) return "Se actualizează difuzoarele";
+  if (std::strcmp(key, "settings") == 0) return "Setări";
+  if (std::strcmp(key, "brightness") == 0) return "Luminozitate";
+  if (std::strcmp(key, "daytime") == 0) return "Zi";
+  if (std::strcmp(key, "nighttime") == 0) return "Noapte";
+  if (std::strcmp(key, "timer") == 0) return "Temporizator";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Confirmați";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Wi-Fi pentru oaspeți";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "Starea Wi-Fi nu s-a schimbat";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -8667,6 +9029,7 @@ inline const char *espcontrol_i18n_key_ru(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Направление";
   if (std::strcmp(key, "disarm") == 0) return "Снять с охраны";
   if (std::strcmp(key, "disarmed") == 0) return "Снято с охраны";
+  if (std::strcmp(key, "disconnected") == 0) return "Отключено";
   if (std::strcmp(key, "door") == 0) return "Дверь";
   if (std::strcmp(key, "door_open") == 0) return "Дверь открыта";
   if (std::strcmp(key, "dock") == 0) return "На базу";
@@ -8807,6 +9170,7 @@ inline const char *espcontrol_i18n_key_ru(const char *key) {
   if (std::strcmp(key, "vacationhold") == 0) return "Удержание на отпуск";
   if (std::strcmp(key, "vacuum") == 0) return "Пылесос";
   if (std::strcmp(key, "version_unknown") == 0) return "Версия неизвестна";
+  if (std::strcmp(key, "voice") == 0) return "Голос";
   if (std::strcmp(key, "volume") == 0) return "Громкость";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Ожидание Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Подключение к \nHome Assistant";
@@ -8865,6 +9229,14 @@ inline const char *espcontrol_i18n_key_ru(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Не удалось сгруппировать";
   if (std::strcmp(key, "speakers_updated") == 0) return "Динамики обновлены";
   if (std::strcmp(key, "updating_speakers") == 0) return "Обновление динамиков";
+  if (std::strcmp(key, "settings") == 0) return "Настройки";
+  if (std::strcmp(key, "brightness") == 0) return "Яркость";
+  if (std::strcmp(key, "daytime") == 0) return "День";
+  if (std::strcmp(key, "nighttime") == 0) return "Ночь";
+  if (std::strcmp(key, "timer") == 0) return "Таймер";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Подтвердить";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Гостевой Wi-Fi";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "Состояние Wi-Fi не изменилось";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -8909,6 +9281,7 @@ inline const char *espcontrol_i18n_key_sk(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Smer";
   if (std::strcmp(key, "disarm") == 0) return "Odzbrojiť";
   if (std::strcmp(key, "disarmed") == 0) return "Odzbrojené";
+  if (std::strcmp(key, "disconnected") == 0) return "Odpojené";
   if (std::strcmp(key, "door") == 0) return "Dvere";
   if (std::strcmp(key, "door_open") == 0) return "Dvere otvorené";
   if (std::strcmp(key, "dock") == 0) return "Dokovať";
@@ -9040,6 +9413,7 @@ inline const char *espcontrol_i18n_key_sk(const char *key) {
   if (std::strcmp(key, "unsupported") == 0) return "Nepodporované";
   if (std::strcmp(key, "vacuum") == 0) return "Vysávač";
   if (std::strcmp(key, "version_unknown") == 0) return "Verzia neznáma";
+  if (std::strcmp(key, "voice") == 0) return "Hlas";
   if (std::strcmp(key, "volume") == 0) return "Hlasitosť";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Čakanie na Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Pripája sa k \nHome Assistant";
@@ -9097,6 +9471,14 @@ inline const char *espcontrol_i18n_key_sk(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Zoskupenie zlyhalo";
   if (std::strcmp(key, "speakers_updated") == 0) return "Reproduktory aktualizované";
   if (std::strcmp(key, "updating_speakers") == 0) return "Aktualizácia reproduktorov";
+  if (std::strcmp(key, "settings") == 0) return "Nastavenia";
+  if (std::strcmp(key, "brightness") == 0) return "Jas";
+  if (std::strcmp(key, "daytime") == 0) return "Deň";
+  if (std::strcmp(key, "nighttime") == 0) return "Noc";
+  if (std::strcmp(key, "timer") == 0) return "Časovač";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Potvrdiť";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Wi-Fi pre hostí";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "Stav Wi-Fi sa nezmenil";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -9143,6 +9525,7 @@ inline const char *espcontrol_i18n_key_sl(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Smer";
   if (std::strcmp(key, "disarm") == 0) return "Izklopi varovanje";
   if (std::strcmp(key, "disarmed") == 0) return "Varovanje izklopljeno";
+  if (std::strcmp(key, "disconnected") == 0) return "Prekinjeno";
   if (std::strcmp(key, "door") == 0) return "Vrata";
   if (std::strcmp(key, "door_open") == 0) return "Vrata odprta";
   if (std::strcmp(key, "dock") == 0) return "Priklop";
@@ -9276,6 +9659,7 @@ inline const char *espcontrol_i18n_key_sl(const char *key) {
   if (std::strcmp(key, "vacationhold") == 0) return "Počitniško zadržanje";
   if (std::strcmp(key, "vacuum") == 0) return "Sesalnik";
   if (std::strcmp(key, "version_unknown") == 0) return "Različica neznana";
+  if (std::strcmp(key, "voice") == 0) return "Glas";
   if (std::strcmp(key, "volume") == 0) return "Glasnost";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Čakanje na Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Povezovanje s \nHome Assistant";
@@ -9333,6 +9717,14 @@ inline const char *espcontrol_i18n_key_sl(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Združevanje ni uspelo";
   if (std::strcmp(key, "speakers_updated") == 0) return "Zvočniki posodobljeni";
   if (std::strcmp(key, "updating_speakers") == 0) return "Posodabljanje zvočnikov";
+  if (std::strcmp(key, "settings") == 0) return "Nastavitve";
+  if (std::strcmp(key, "brightness") == 0) return "Svetlost";
+  if (std::strcmp(key, "daytime") == 0) return "Dan";
+  if (std::strcmp(key, "nighttime") == 0) return "Noč";
+  if (std::strcmp(key, "timer") == 0) return "Časovnik";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Potrdi";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Wi-Fi za goste";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "Stanje Wi-Fi se ni spremenilo";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -9378,6 +9770,7 @@ inline const char *espcontrol_i18n_key_sv(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Riktning";
   if (std::strcmp(key, "disarm") == 0) return "Avlarma";
   if (std::strcmp(key, "disarmed") == 0) return "Avlarmat";
+  if (std::strcmp(key, "disconnected") == 0) return "Frånkopplad";
   if (std::strcmp(key, "door") == 0) return "Dörr";
   if (std::strcmp(key, "door_open") == 0) return "Dörr öppen";
   if (std::strcmp(key, "dock") == 0) return "Docka";
@@ -9504,6 +9897,7 @@ inline const char *espcontrol_i18n_key_sv(const char *key) {
   if (std::strcmp(key, "unsupported") == 0) return "Stöds inte";
   if (std::strcmp(key, "vacuum") == 0) return "Dammsugare";
   if (std::strcmp(key, "version_unknown") == 0) return "Version okänd";
+  if (std::strcmp(key, "voice") == 0) return "Röst";
   if (std::strcmp(key, "volume") == 0) return "Volym";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Väntar på Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Ansluter till \nHome Assistant";
@@ -9561,6 +9955,13 @@ inline const char *espcontrol_i18n_key_sv(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Gruppering misslyckades";
   if (std::strcmp(key, "speakers_updated") == 0) return "Högtalare uppdaterade";
   if (std::strcmp(key, "updating_speakers") == 0) return "Uppdaterar högtalare";
+  if (std::strcmp(key, "settings") == 0) return "Inställningar";
+  if (std::strcmp(key, "brightness") == 0) return "Ljusstyrka";
+  if (std::strcmp(key, "daytime") == 0) return "Dagtid";
+  if (std::strcmp(key, "nighttime") == 0) return "Nattetid";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Bekräfta";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Gäst-Wi-Fi";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "Wi-Fi ändrades inte";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -9607,6 +10008,7 @@ inline const char *espcontrol_i18n_key_tr(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Yön";
   if (std::strcmp(key, "disarm") == 0) return "Devre dışı bırak";
   if (std::strcmp(key, "disarmed") == 0) return "Devre dışı";
+  if (std::strcmp(key, "disconnected") == 0) return "Bağlantısı kesildi";
   if (std::strcmp(key, "door") == 0) return "Kapı";
   if (std::strcmp(key, "door_open") == 0) return "Kapı açık";
   if (std::strcmp(key, "dock") == 0) return "Yuvaya dön";
@@ -9744,6 +10146,7 @@ inline const char *espcontrol_i18n_key_tr(const char *key) {
   if (std::strcmp(key, "vacationhold") == 0) return "Tatil tutması";
   if (std::strcmp(key, "vacuum") == 0) return "Süpürge";
   if (std::strcmp(key, "version_unknown") == 0) return "Sürüm bilinmiyor";
+  if (std::strcmp(key, "voice") == 0) return "Ses";
   if (std::strcmp(key, "volume") == 0) return "Ses";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Home Assistant bekleniyor";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "\nHome Assistant'a bağlanılıyor";
@@ -9801,6 +10204,14 @@ inline const char *espcontrol_i18n_key_tr(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Gruplama başarısız";
   if (std::strcmp(key, "speakers_updated") == 0) return "Hoparlörler güncellendi";
   if (std::strcmp(key, "updating_speakers") == 0) return "Hoparlörler güncelleniyor";
+  if (std::strcmp(key, "settings") == 0) return "Ayarlar";
+  if (std::strcmp(key, "brightness") == 0) return "Parlaklık";
+  if (std::strcmp(key, "daytime") == 0) return "Gündüz";
+  if (std::strcmp(key, "nighttime") == 0) return "Gece";
+  if (std::strcmp(key, "timer") == 0) return "Zamanlayıcı";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Onayla";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Misafir Wi-Fi";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "Wi-Fi durumu değişmedi";
   return espcontrol_i18n_key_en(key);
 }
 
@@ -9848,6 +10259,7 @@ inline const char *espcontrol_i18n_key_uk(const char *key) {
   if (std::strcmp(key, "direction") == 0) return "Напрямок";
   if (std::strcmp(key, "disarm") == 0) return "Вимкнути охорону";
   if (std::strcmp(key, "disarmed") == 0) return "Охорону вимкнено";
+  if (std::strcmp(key, "disconnected") == 0) return "Від’єднано";
   if (std::strcmp(key, "door") == 0) return "Двері";
   if (std::strcmp(key, "door_open") == 0) return "Двері відчинені";
   if (std::strcmp(key, "dock") == 0) return "До бази";
@@ -9986,6 +10398,7 @@ inline const char *espcontrol_i18n_key_uk(const char *key) {
   if (std::strcmp(key, "vacationhold") == 0) return "Утримання на відпустку";
   if (std::strcmp(key, "vacuum") == 0) return "Пилосос";
   if (std::strcmp(key, "version_unknown") == 0) return "Версія невідома";
+  if (std::strcmp(key, "voice") == 0) return "Голос";
   if (std::strcmp(key, "volume") == 0) return "Гучність";
   if (std::strcmp(key, "waiting_for_home_assistant") == 0) return "Очікування Home Assistant";
   if (std::strcmp(key, "home_assistant_connection_lost") == 0) return "Підключення до \nHome Assistant";
@@ -10043,6 +10456,14 @@ inline const char *espcontrol_i18n_key_uk(const char *key) {
   if (std::strcmp(key, "grouping_failed") == 0) return "Не вдалося згрупувати";
   if (std::strcmp(key, "speakers_updated") == 0) return "Динаміки оновлено";
   if (std::strcmp(key, "updating_speakers") == 0) return "Оновлення динаміків";
+  if (std::strcmp(key, "settings") == 0) return "Налаштування";
+  if (std::strcmp(key, "brightness") == 0) return "Яскравість";
+  if (std::strcmp(key, "daytime") == 0) return "День";
+  if (std::strcmp(key, "nighttime") == 0) return "Ніч";
+  if (std::strcmp(key, "timer") == 0) return "Таймер";
+  if (std::strcmp(key, "timer_confirm") == 0) return "Підтвердити";
+  if (std::strcmp(key, "guest_wifi") == 0) return "Гостьовий Wi-Fi";
+  if (std::strcmp(key, "wifi_did_not_change") == 0) return "Стан Wi-Fi не змінився";
   return espcontrol_i18n_key_en(key);
 }
 

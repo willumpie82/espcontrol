@@ -824,6 +824,22 @@
         }
       }
     },
+    "guition-esp32-p4-jc8012p4a1-v3": {
+      "profiles": {
+        "platform": "esp32-p4",
+        "display": "jc8012p4a1-1280x800",
+        "modal": "large-landscape",
+        "fonts": "large-panel-p4",
+        "network": "c6-firmware-update",
+        "artwork": "landscape-1280x800"
+      },
+      "config": {
+        "public": {
+          "name": "Guition JC8012P4A1 V3 (production silicon)",
+          "docsPath": "/screens/jc8012p4a1-v3"
+        }
+      }
+    },
     "esp32-p4-86": {
       "profiles": {
         "platform": "esp32-p4",
@@ -1024,7 +1040,7 @@
       "config": {
         "slots": 9,
         "capabilities": {
-          "imageSlots": 1
+        "imageSlots": 2
         },
         "public": {
           "name": "Guition 4848S040",
@@ -1068,8 +1084,7 @@
           "dragMode": "displace",
           "dragAnimation": true,
           "disabledCardTypes": [
-            "weather_forecast",
-            "image"
+          "weather_forecast"
           ],
           "screen": {
             "width": "55%",

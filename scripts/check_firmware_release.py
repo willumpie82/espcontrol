@@ -212,7 +212,9 @@ def test_release_skill_creates_selected_tag_before_draft() -> None:
 def test_release_preparation_adds_the_tag_before_tagging() -> None:
     skill = RELEASE_SKILL.read_text(encoding="utf-8")
     assert skill.index("prepare_release_web_assets.py") < skill.index('git tag -a "$TAG"')
-    assert skill.index("python3 scripts/build.py\n") < skill.index("python3 scripts/build.py --check")
+    assert skill.index("python3 scripts/build.py www --retain-current-bundle") < skill.index(
+        "python3 scripts/build.py www --check --retain-current-bundle"
+    )
     assert "gh pr create --base main" in skill
     assert "git push origin main" not in skill
     with TemporaryDirectory() as tmp:
@@ -280,11 +282,30 @@ def make_recovery_files(
 
 def web_manifest_for(base: Path, device_profiles: list[str]) -> Path:
     data = json.loads(WEB_MANIFEST.read_text(encoding="utf-8"))
-    data["bundles"][0]["deviceProfiles"] = device_profiles
-    data["bundles"][0]["firmwareVersions"] = [VERSION]
+    for bundle in data["bundles"]:
+        bundle["deviceProfiles"] = device_profiles
+        bundle["firmwareVersions"] = [VERSION]
     path = base.parent / "web-assets.json"
     path.write_text(json.dumps(data), encoding="utf-8")
     return path
+
+
+def test_web_bundle_compatibility_aliases() -> None:
+    with TemporaryDirectory() as tmp:
+        path = web_manifest_for(Path(tmp) / "release", [SLUG])
+        original = json.loads(path.read_text())
+        bundle = firmware_release.current_web_bundle(path, WEB_ROOT)
+        assert bundle["webAssetVersion"] == 2
+        for field, value in [("webAssetVersion", 2), ("sha256", "0" * 64), ("deviceProfiles", [])]:
+            data = json.loads(json.dumps(original))
+            data["bundles"][1][field] = value
+            path.write_text(json.dumps(data))
+            try:
+                firmware_release.current_web_bundle(path, WEB_ROOT)
+            except firmware_release.FirmwareReleaseError:
+                pass
+            else:
+                raise AssertionError(f"web manifest accepted an inconsistent alias: {field}")
 
 
 def record_release_provenance(
@@ -465,6 +486,7 @@ def test_recovery_sources_and_documentation_stay_complete() -> None:
         "guition-esp32-p4-jc4880p443": ROOT / "docs/screens/jc4880p443.md",
         "guition-esp32-p4-jc8012p4a1": ROOT / "docs/screens/jc8012p4a1.md",
         "guition-esp32-p4-jc8012p4a1-v2": ROOT / "docs/screens/jc8012p4a1-v2.md",
+        "guition-esp32-p4-jc8012p4a1-v3": ROOT / "docs/screens/jc8012p4a1-v3.md",
         "esp32-p4-86": ROOT / "docs/screens/p4-86.md",
     }
     for slug, path in screen_docs.items():
@@ -782,6 +804,7 @@ def main() -> int:
     test_pages_excludes_draft_prereleases()
     test_release_skill_creates_selected_tag_before_draft()
     test_valid_files_and_directory()
+    test_web_bundle_compatibility_aliases()
     test_placeholder_fails()
     test_unrelated_placeholder_strings_pass()
     test_wrong_manifest_version_fails()
