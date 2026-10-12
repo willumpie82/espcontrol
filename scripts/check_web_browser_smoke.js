@@ -91,6 +91,23 @@ const BUTTON_FIXTURES = [
   "alarm_control_panel.house;Alarm;Security;Auto;;;alarm;;",
 ];
 
+// Fixture checks that open a specific card, keyed by its index in
+// BUTTON_FIXTURES. A panel with fewer slots than fixtures cannot show every
+// card at once, so the fixtures are split into windows of `slots` cards and
+// each window beyond the first is tested in its own extra pass.
+const FIXTURE_CHECKS = [
+  { index: 4, check: (page, label, slot) => assertCoverSettingsPanels(page, label, slot) },
+  { index: 5, check: (page, label, slot) => assertAlarmSettingsPanels(page, label, slot) },
+];
+
+function fixtureWindow(testCase, index) {
+  return { pass: Math.floor(index / testCase.slots), slot: (index % testCase.slots) + 1 };
+}
+
+function fixtureWindowCount(testCase) {
+  return Math.ceil(BUTTON_FIXTURES.length / testCase.slots);
+}
+
 function nativeConfigState(slug) {
   const buttons = {};
   BUTTON_FIXTURES.forEach((value, index) => { buttons[index + 1] = value; });
@@ -514,9 +531,15 @@ async function installFakeEventSource(page) {
   });
 }
 
-function seededEvents() {
+// Devices with fewer slots than BUTTON_FIXTURES cannot show every sample card
+// at once, so the fixtures are tested in rotating windows. `fixtures` is the
+// window placed into slots 1..n for this pass.
+function seededEvents(fixtures = BUTTON_FIXTURES) {
+  const order = fixtures === BUTTON_FIXTURES
+    ? "1,2,3w,4,5,6"
+    : fixtures.map((_, index) => index + 1).join(",");
   const events = [
-    { id: "text-button_order", state: "1,2,3w,4,5,6" },
+    { id: "text-button_order", state: order },
     { id: "text-button_on_color", state: "0073FF" },
     { id: "text-button_off_color", state: "CECECE" },
     { id: "text-sensor_card_color", state: "DEDEDE" },
@@ -607,7 +630,7 @@ function seededEvents() {
       state: "1,B|media_player.living:Living:Speaker:Auto:play_pause::media",
     },
   ];
-  BUTTON_FIXTURES.forEach((state, index) => {
+  fixtures.forEach((state, index) => {
     events.push({ id: `text-button_${index + 1}_config`, state });
   });
   return events;
@@ -3034,10 +3057,10 @@ async function assertWebhookSettingsPanel(page, posts, label) {
   );
 }
 
-async function assertCoverSettingsPanels(page, label) {
+async function assertCoverSettingsPanels(page, label, slot = 5) {
   await page.getByRole("tab", { name: "Screen" }).click();
   await page.waitForSelector("#sp-screen.sp-page.active");
-  await page.locator('.sp-main [data-slot="5"]').click();
+  await page.locator(`.sp-main [data-slot="${slot}"]`).click();
   await page.getByRole("button", { name: "Edit", exact: true }).click();
   await page.waitForSelector(".sp-settings-overlay.sp-visible");
 
@@ -3240,10 +3263,10 @@ async function assertMediaCoverArtSettingsPanels(page, label) {
   });
 }
 
-async function assertAlarmSettingsPanels(page, label) {
+async function assertAlarmSettingsPanels(page, label, slot = 6) {
   await page.getByRole("tab", { name: "Screen" }).click();
   await page.waitForSelector("#sp-screen.sp-page.active");
-  await page.locator('.sp-main [data-slot="6"]').click();
+  await page.locator(`.sp-main [data-slot="${slot}"]`).click();
   await page.getByRole("button", { name: "Edit", exact: true }).click();
   await page.waitForSelector(".sp-settings-overlay.sp-visible");
 
@@ -5818,11 +5841,11 @@ async function runCase(browser, testCase) {
       `${testCase.name} after settings`,
       testCase,
     );
-    await assertCoverSettingsPanels(page, testCase.name);
+    await runFixtureChecks(page, testCase, 0, testCase.name, [4]);
     if (testCase.mediaCoverArtSupported) {
       await assertMediaCoverArtSettingsPanels(page, testCase.name);
     }
-    await assertAlarmSettingsPanels(page, testCase.name);
+    await runFixtureChecks(page, testCase, 0, testCase.name, [5]);
     await assertPlaylistValidationOpensSourcePanel(page, testCase.name);
     await assertSpeakerGroupEditorAndPreview(page, posts, testCase.name);
     if (testCase.exerciseInteractions) {
@@ -5867,6 +5890,57 @@ async function runCase(browser, testCase) {
     throw error;
   } finally {
     await context.close();
+  }
+}
+
+// Runs the registered checks whose cards sit in the given pass. `only`
+// limits the run to specific fixture indexes (the first pass interleaves them
+// with other checks).
+async function runFixtureChecks(page, testCase, pass, label, only = null) {
+  for (const { index, check } of FIXTURE_CHECKS) {
+    if (only && !only.includes(index)) continue;
+    const where = fixtureWindow(testCase, index);
+    if (where.pass !== pass) continue;
+    await check(page, label, where.slot);
+  }
+}
+
+// Extra passes for small panels: each window of fixtures that did not fit in
+// an earlier pass is seeded into slots 1..n and its cards are checked there.
+async function runExtraFixturePasses(browser, testCase) {
+  for (let pass = 1; pass < fixtureWindowCount(testCase); pass += 1) {
+    const fixtures = BUTTON_FIXTURES.slice(pass * testCase.slots, (pass + 1) * testCase.slots);
+    if (!FIXTURE_CHECKS.some(({ index }) => fixtureWindow(testCase, index).pass === pass)) continue;
+    const label = `${testCase.name} (card set ${pass + 1})`;
+    const context = await browser.newContext({ viewport: testCase.viewport });
+    await installRoutes(context, testCase.slug);
+    const page = await context.newPage();
+    const errors = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    page.on("console", (message) => {
+      if (message.type() === "error" || message.type() === "warning")
+        errors.push(`[${message.type()}] ${message.text()}`);
+    });
+    await installFakeEventSource(page);
+    try {
+      await page.goto(`http://espcontrol.test/${testCase.slug}?events=1`, {
+        waitUntil: "domcontentloaded",
+      });
+      await page.waitForSelector("#sp-app");
+      await page.waitForFunction(
+        () => window.__eventSources && window.__eventSources.length > 0,
+      );
+      await page.evaluate(
+        (events) => window.__seedEspState(events),
+        seededEvents(fixtures),
+      );
+      await page.waitForSelector(".sp-main > .sp-btn");
+      await page.waitForTimeout(100);
+      await runFixtureChecks(page, testCase, pass, label);
+      assert.deepStrictEqual(errors, [], `${label}: browser errors were reported`);
+    } finally {
+      await context.close();
+    }
   }
 }
 
@@ -6168,6 +6242,7 @@ async function assertPanelNaming(browser) {
     await assertResetControls(browser);
     for (const testCase of ACTIVE_CASES) {
       if (!acceptanceOnly) await runCase(browser, testCase);
+      if (!acceptanceOnly) await runExtraFixturePasses(browser, testCase);
       await assertNativeProfileJourney(browser, testCase);
       await assertLegacyProfileFallback(browser, testCase);
       if (testCase.exerciseInteractions) await assertLegacyRestoreVerificationFailure(browser, testCase);
